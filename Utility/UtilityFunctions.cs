@@ -1,0 +1,80 @@
+﻿using System.IO;
+using Newtonsoft.Json.Linq;
+
+using BepInEx;
+using ValheimLib.ODB;
+using System.Collections.Generic;
+using ValheimLib;
+
+namespace Terraheim.Utility
+{
+    class UtilityFunctions
+    {
+        public static JObject GetJsonFromFile(string filename)
+        {
+            var filePath = Path.Combine(Paths.PluginPath, "DasSauerkraut-Terraheim", filename);
+            //Log.LogWarning(filePath);
+            string rawText = File.ReadAllText(filePath);
+            //Log.LogWarning(rawText);
+            return JObject.Parse(rawText);
+        }
+
+        public static void ModifyWeaponDamage(ref CustomItem item, JToken damages)
+        {
+            foreach(var damage in damages["damages"])
+            {
+                switch ((string)damage["type"])
+                {
+                    case "blunt":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_blunt = (float)damage["value"];
+                        break;
+                    case "slash":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_slash = (float)damage["value"];
+                        break;
+                    case "pierce":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_pierce = (float)damage["value"];
+                        break;
+                    case "chop":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_chop = (float)damage["value"];
+                        break;
+                    case "pickaxe":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_blunt = (float)damage["value"];
+                        break;
+                    case "fire":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_fire = (float)damage["value"];
+                        break;
+                    case "frost":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_frost = (float)damage["value"];
+                        break;
+                    case "lightning":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_lightning = (float)damage["value"];
+                        break;
+                    case "poison":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_poison = (float)damage["value"];
+                        break;
+                    case "spirit":
+                        item.ItemDrop.m_itemData.m_shared.m_damages.m_spirit = (float)damage["value"];
+                        break;
+                    default:
+                        Log.LogWarning("Terraheim: Warning damage type not found! " + (string)damage["type"]);
+                        break;
+                }
+            }
+        }
+
+        public static void GetRecipe(ref Recipe recipe, JToken json)
+        {
+            var itemReqs = new List<Piece.Requirement>();
+            int index = 0;
+            foreach(var item in json["recipe"])
+            {
+                itemReqs.Add(MockRequirement.Create((string)item["item"], (int)item["amount"]));
+                itemReqs[0].m_amountPerLevel = (int)item["perLevel"];
+                index++;
+            }
+            recipe.m_resources = itemReqs.ToArray();
+            recipe.m_craftingStation = Mock<CraftingStation>.Create((string)json["station"]);
+            recipe.m_amount = (int)json["amountCrafted"];
+        }
+    }
+}
