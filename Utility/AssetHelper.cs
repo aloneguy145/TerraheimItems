@@ -34,6 +34,9 @@ namespace Terraheim.Utility
 
         public static GameObject ThrowingAxeFlintPrefab;
         public static GameObject ThrowingAxeBronzePrefab;
+        public static GameObject ThrowingAxeIronPrefab;
+        public static GameObject ThrowingAxeSilverPrefab;
+        public static GameObject ThrowingAxeBlackmetalPrefab;
 
         public static GameObject JavelinFlintPrefab;
         public static GameObject JavelinBronzePrefab;
@@ -67,6 +70,9 @@ namespace Terraheim.Utility
 
             ThrowingAxeFlintPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ThrowingAxes/Flint/ThrowingAxeFlint.prefab");
             ThrowingAxeBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ThrowingAxes/Bronze/ThrowingAxeBronze.prefab");
+            ThrowingAxeIronPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ThrowingAxes/Iron/ThrowingAxeIron.prefab");
+            ThrowingAxeSilverPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ThrowingAxes/Silver/ThrowingAxeSilver.prefab");
+            ThrowingAxeBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ThrowingAxes/Blackmetal/ThrowingAxeBlackmetal.prefab");
 
             JavelinFlintPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Flint/JavelinFlint.prefab");
             JavelinBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Bronze/JavelinBronze.prefab");

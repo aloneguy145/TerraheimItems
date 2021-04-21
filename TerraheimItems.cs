@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
+using System.IO;
 using Terraheim.Utility;
 
 namespace Terraheim
@@ -14,7 +15,8 @@ namespace Terraheim
         public const string ModGuid = AuthorName + "." + ModName;
         private const string AuthorName = "DasSauerkraut";
         private const string ModName = "TerraheimItems";
-        private const string ModVer = "1.4.0";
+        private const string ModVer = "1.6.5";
+        public static readonly string ModPath = Path.GetDirectoryName(typeof(TerraheimItems).Assembly.Location);
 
         private readonly Harmony harmony = new Harmony(ModGuid);
 
@@ -24,6 +26,7 @@ namespace Terraheim
         {
             Instance = this;
             Log.Init(Logger);
+            TranslationUtils.LoadTranslations();
             harmony.PatchAll();
             Utility.AssetHelper.Init();
             Weapons.Greatswords.Init();
@@ -39,7 +42,7 @@ namespace Terraheim
 
             Weapons.Bombs.Init();
             Weapons.ThrowingAxes.Init();
-            Weapons.Javelins.Init();
+            //Weapons.Javelins.Init();
 
             Log.LogInfo("Patching complete");
         }

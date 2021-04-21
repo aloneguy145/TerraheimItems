@@ -12,25 +12,14 @@ namespace Terraheim.Weapons
         public static CustomItem customItem;
         public static CustomRecipe customRecipe;
 
-        public const string TokenName = "$item_pickaxe_blackmetal";
-        public const string TokenValue = "Blackmetal Pickaxe";
-
-        public const string TokenDescriptionName = "$item_pickaxe_blackmetal_description";
-        public const string TokenDescriptionValue = "A truly wonderful tool, durable and effective.";
-
         public const string CraftingStationPrefabName = "forge";
         
-        public const string TokenLanguage = "English";
-
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
         internal static void Init()
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
         }
 
         private static void AddRecipe()

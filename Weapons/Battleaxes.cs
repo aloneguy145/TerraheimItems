@@ -18,52 +18,13 @@ namespace Terraheim.Weapons
         public static CustomItem customItemSil;
         public static CustomRecipe customRecipeSil;
 
-        public const string TokenName = "$item_battleaxe_sledge_blackmetal";
-        public const string TokenValue = "Blackmetal Axehammer";
-
-        public const string TokenDescriptionName = "$item_battleaxe_sledge_blackmetal_description";
-        public const string TokenDescriptionValue = "An unbreakable edge, a crushing sledge.";
-
-        public const string TokenNameBM = "$item_battleaxe_blackmetal";
-        public const string TokenValueBM = "Blackmetal Battleaxe";
-
-        public const string TokenDescriptionNameBM = "$item_battleaxe_blackmetal_description";
-        public const string TokenDescriptionValueBM = "A harrowing blade of unearthly material.";
-
-        public const string TokenNameSil = "$item_battleaxe_silver";
-        public const string TokenValueSil = "Silver Battleaxe";
-
-        public const string TokenDescriptionNameSil = "$item_battleaxe_silver_description";
-        public const string TokenDescriptionValueSil = "A chilling blade of pure silver.";
-
-        public const string TokenNameBronze = "$item_battleaxe_bronze_terraheim";
-        public const string TokenValueBronze = "Bronze Battleaxe";
-
-        public const string TokenDescriptionNameBronze = "$item_battleaxe_bronze_terraheim_description";
-        public const string TokenDescriptionValueBronze = "Wolf-caller, head-splitter.";
-
-        public const string CraftingStationPrefabName = "forge";
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
-
-        public const string TokenLanguage = "English";
 
         internal static void Init()
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
-
-            Language.AddToken(TokenNameBM, TokenValueBM, TokenLanguage);
-            Language.AddToken(TokenDescriptionNameBM, TokenDescriptionValueBM, TokenLanguage);
-
-            Language.AddToken(TokenNameBronze, TokenValueBronze, TokenLanguage);
-            Language.AddToken(TokenDescriptionNameBronze, TokenDescriptionValueBronze, TokenLanguage);
-
-            Language.AddToken(TokenNameSil, TokenValueSil, TokenLanguage);
-            Language.AddToken(TokenDescriptionNameSil, TokenDescriptionValueSil, TokenLanguage);
         }
 
         private static void AddRecipe()

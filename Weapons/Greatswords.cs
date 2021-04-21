@@ -16,28 +16,6 @@ namespace Terraheim.Weapons
         public static CustomItem blackmetalItem;
         public static CustomRecipe blackmetalRecipe;
 
-        public const string TokenName = "$item_greatsword_folcbrand";
-        public const string TokenValue = "Folcbrand";
-
-        public const string IronTokenName = "$item_greatsword_iron";
-        public const string IronTokenValue = "Iron Greatsword";
-
-        public const string BMTokenName = "$item_greatsword_blackmetal";
-        public const string BMTokenValue = "Blackmetal Greatsword";
-
-        public const string TokenDescriptionName = "$item_greatsword_iron_description";
-        public const string TokenDescriptionValue = "Blood-worm, wound-tool.";
-
-        public const string BMTokenDescriptionName = "$item_greatsword_blackmetal_description";
-        public const string BMTokenDescriptionValue = "An undulating blade of cold, dark steel.";
-
-        public const string IronTokenDescriptionName = "$item_greatsword_folcbrand_description";
-        public const string IronTokenDescriptionValue = "A keen sword, each strike cuts like a freezing gale.";
-
-        public const string CraftingStationPrefabName = "forge";
-        
-        public const string TokenLanguage = "English";
-
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
 
@@ -45,15 +23,6 @@ namespace Terraheim.Weapons
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
-
-            Language.AddToken(IronTokenName, IronTokenValue, TokenLanguage);
-            Language.AddToken(IronTokenDescriptionName, IronTokenDescriptionValue, TokenLanguage);
-
-            Language.AddToken(BMTokenName, BMTokenValue, TokenLanguage);
-            Language.AddToken(BMTokenDescriptionName, BMTokenDescriptionValue, TokenLanguage);
         }
 
         private static void AddRecipe()

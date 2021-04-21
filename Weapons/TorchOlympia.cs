@@ -11,23 +11,12 @@ namespace Terraheim.Weapons
         public static CustomItem customItem;
         public static CustomRecipe customRecipe;
 
-        public const string TokenName = "$item_torch_olympia";
-        public const string TokenValue = "O L Y M P I A";
-
-        public const string TokenDescriptionName = "$item_torch_olympia_description";
-        public const string TokenDescriptionValue = "Some dude in a toga gave you this...";
-
         public const string CraftingStationPrefabName = "piece_workbench";
         
-        public const string TokenLanguage = "English";
-
         internal static void Init()
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
         }
 
         private static void AddRecipe()

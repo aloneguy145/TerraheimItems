@@ -38,6 +38,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\AnimationSpeedPatches.cs" />
     <Compile Include="Utility\AssetHelper.cs" />
+    <Compile Include="Utility\TranslationUtils.cs" />
     <Compile Include="Utility\UtilityFunctions.cs" />
     <Compile Include="Weapons\Battleaxes.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
