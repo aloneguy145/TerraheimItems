@@ -28,7 +28,7 @@ namespace TerraheimItems.Patches
         static void CharacterAnimFixedUpdatePrefix(ref Animator ___m_animator, Character ___m_character)
         {
             //Make sure this is being applied to the right things
-            if (Player.m_localPlayer == null || !___m_character.IsPlayer() || ___m_character.IsPlayer() && (___m_character as Player).GetPlayerID() != Player.m_localPlayer.GetPlayerID() )
+            if (Player.m_localPlayer == null || !___m_character.IsPlayer() || ___m_character.IsPlayer() && (___m_character as Player).GetPlayerID() != Player.m_localPlayer.GetPlayerID())
                 return;
 
             //Make sure there is animation playing
@@ -38,7 +38,7 @@ namespace TerraheimItems.Patches
             //Check if weapon is a sword
             if (___m_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.StartsWith("Attack"))
             {
-                if((bool)((___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_name.Contains("greatsword")) || (bool)((___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_name.Contains("folcbrand")))
+                if ((bool)((___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_name.Contains("greatsword")) || (bool)((___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_name.Contains("folcbrand")))
                 {
                     ___m_animator.speed = ChangeSpeed(___m_character, ___m_animator, (float)balance["GreatswordAnimationSpeedAdjust"]);
                 }
@@ -50,6 +50,14 @@ namespace TerraheimItems.Patches
                 {
                     //Log.LogWarning("Is throwingaxe");
                     ___m_animator.speed = ChangeSpeed(___m_character, ___m_animator, (float)balance["ThrowingAxeAnimationSpeedAdjust"]);
+                }
+            }
+            if (___m_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.StartsWith("BattleAxe1"))
+            {
+                if ((bool)((___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_name.Contains("greatsword")))
+                {
+                    //Log.LogWarning("Is throwingaxe");
+                    ___m_animator.speed = ChangeSpeed(___m_character, ___m_animator, (float)balance["GreatswordAnimationSpeedAdjust"]);
                 }
             }
         }
