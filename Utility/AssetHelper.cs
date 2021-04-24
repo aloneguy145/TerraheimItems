@@ -25,7 +25,10 @@ namespace Terraheim.Utility
         public static GameObject BattleaxeBlackmetalPrefab;
         public static GameObject BattleaxeSilverPrefab;
         public static GameObject GreateaxeBlackmetalPrefab;
-        
+
+        public static GameObject MaceFirePrefab;
+        public static GameObject GreatswordFirePrefab;
+
         public static GameObject TorchOlympiaPrefab;
 
         public static GameObject BombFirePrefab;
@@ -61,6 +64,9 @@ namespace Terraheim.Utility
             BattleaxeBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackmetalAxehammer/BattleaxeBlackmetal.prefab");
             BattleaxeSilverPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/BattleaxeSilver/BattleaxeSilver.prefab");
             GreateaxeBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/BattleaxeBlackmetal/GreataxeBlackmetal.prefab");
+
+            MaceFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/mace/MaceFire.prefab");
+            GreatswordFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greatsword/GreatswordFire.prefab");
 
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
 

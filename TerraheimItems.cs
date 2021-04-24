@@ -37,6 +37,7 @@ namespace Terraheim
             Weapons.PickaxeBlackmetal.Init();
             Weapons.SpearBlackmetal.Init();
             Weapons.Battleaxes.Init();
+            Weapons.FlametalWeapons.Init();
 
             Weapons.TorchOlympia.Init();
 
