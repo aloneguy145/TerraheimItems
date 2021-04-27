@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Log.cs" />
+    <Compile Include="Patches\MeleeProjectilePatch.cs" />
     <Compile Include="Patches\ProjectileSpawnOnHitPatch.cs" />
     <Compile Include="TerraheimItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -41,6 +42,7 @@
     <Compile Include="Utility\TranslationUtils.cs" />
     <Compile Include="Utility\UtilityFunctions.cs" />
     <Compile Include="Weapons\Battleaxes.cs" />
+    <Compile Include="Weapons\FlametalWeapons.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
     <Compile Include="Weapons\PickaxeBlackmetal.cs" />
     <Compile Include="Weapons\KnifeIron.cs" />
