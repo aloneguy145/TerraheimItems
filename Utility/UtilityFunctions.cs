@@ -12,7 +12,7 @@ namespace Terraheim.Utility
     {
         public static JObject GetJsonFromFile(string filename)
         {
-            var filePath = Path.Combine(Paths.PluginPath, "DasSauerkraut-Terraheim", filename);
+            var filePath = Path.Combine(TerraheimItems.ModPath, filename);
             //Log.LogWarning(filePath);
             string rawText = File.ReadAllText(filePath);
             //Log.LogWarning(rawText);
