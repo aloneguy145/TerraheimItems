@@ -13,6 +13,8 @@ namespace Terraheim.Weapons
         public static CustomRecipe maceRecipe;
         public static CustomItem gsItem;
         public static CustomRecipe gsRecipe;
+        public static CustomItem atgeirItem;
+        public static CustomRecipe atgeirRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -26,16 +28,23 @@ namespace Terraheim.Weapons
         {
             var recipeMace = ScriptableObject.CreateInstance<Recipe>();
             var recipeGS = ScriptableObject.CreateInstance<Recipe>();
+            var recipeAtgeir = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
+            recipeAtgeir.m_item = AssetHelper.AtgeirFirePrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipeMace, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeGS, balance["AxeForstasca"]);
+            UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["AxeForstasca"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
+            atgeirRecipe = new CustomRecipe(recipeAtgeir, true, true);
+
             ObjectDBHelper.Add(maceRecipe);
+            ObjectDBHelper.Add(gsRecipe);
+            ObjectDBHelper.Add(atgeirRecipe);
         }
 
         private static void AddItem()
@@ -53,6 +62,13 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["AxeForstasca"]);
             }
             ObjectDBHelper.Add(gsItem);
+
+            atgeirItem = new CustomItem(AssetHelper.AtgeirFirePrefab, true);
+            if ((bool)balance["AxeForstasca"]["modified"])
+            {
+                UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AxeForstasca"]);
+            }
+            ObjectDBHelper.Add(atgeirItem);
         }
     }
 }

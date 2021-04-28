@@ -28,6 +28,7 @@ namespace Terraheim.Utility
 
         public static GameObject MaceFirePrefab;
         public static GameObject GreatswordFirePrefab;
+        public static GameObject AtgeirFirePrefab;
 
         public static GameObject TorchOlympiaPrefab;
 
@@ -67,6 +68,7 @@ namespace Terraheim.Utility
 
             MaceFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/mace/MaceFire.prefab");
             GreatswordFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greatsword/GreatswordFire.prefab");
+            AtgeirFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/atgeir/AtgeirFire.prefab");
 
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
 
