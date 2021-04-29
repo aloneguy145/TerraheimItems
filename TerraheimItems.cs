@@ -15,7 +15,7 @@ namespace Terraheim
         public const string ModGuid = AuthorName + "." + ModName;
         private const string AuthorName = "DasSauerkraut";
         private const string ModName = "TerraheimItems";
-        private const string ModVer = "1.7.0";
+        private const string ModVer = "1.8.0";
         public static readonly string ModPath = Path.GetDirectoryName(typeof(TerraheimItems).Assembly.Location);
 
         private readonly Harmony harmony = new Harmony(ModGuid);
@@ -34,6 +34,7 @@ namespace Terraheim
             Weapons.AtgeirSilver.Init();
             Weapons.KnifeIron.Init();
             Weapons.ParryingDagger.Init();
+            Weapons.BowBlackmetal.Init();
             Weapons.PickaxeBlackmetal.Init();
             Weapons.SpearBlackmetal.Init();
             Weapons.Battleaxes.Init();

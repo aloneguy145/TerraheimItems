@@ -17,6 +17,7 @@ namespace Terraheim.Utility
         public static GameObject AxeForstascaPrefab;
 
         public static GameObject KnifeIronPrefab;
+        public static GameObject BowBlackmetalPrefab;
 
         public static GameObject PickaxeBlackmetalPrefab;
         public static GameObject SpearBlackmetalPrefab;
@@ -60,6 +61,7 @@ namespace Terraheim.Utility
             
             BattleaxeBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/BattleaxeBronze/BattleaxeBronzeTerraheim.prefab");
             KnifeIronPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ironKnife/KnifeIron.prefab");
+            BowBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackmetalbow/BowBlackmetalTH.prefab");
 
             PickaxeBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackironPickaxe/PickaxeBlackmetal.prefab");
             SpearBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackmetalspear/SpearBlackmetal.prefab");
