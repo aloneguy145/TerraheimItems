@@ -43,6 +43,7 @@
     <Compile Include="Utility\UtilityFunctions.cs" />
     <Compile Include="Weapons\Battleaxes.cs" />
     <Compile Include="Weapons\FlametalWeapons.cs" />
+    <Compile Include="Weapons\ParryingDagger.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
     <Compile Include="Weapons\PickaxeBlackmetal.cs" />
     <Compile Include="Weapons\KnifeIron.cs" />

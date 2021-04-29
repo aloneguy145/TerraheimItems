@@ -10,14 +10,6 @@ namespace Terraheim.Weapons {
     {
         public static CustomItem customItem;
         public static CustomRecipe customRecipe;
-
-        public const string TokenName = "$item_knife_iron";
-        public const string TokenValue = "Iron Knife";
-
-        public const string TokenDescriptionName = "$item_knife_iron_description";
-        public const string TokenDescriptionValue = "A faint reminder of your former life.";
-
-        public const string CraftingStationPrefabName = "forge";
         
         public const string TokenLanguage = "English";
 
@@ -27,9 +19,6 @@ namespace Terraheim.Weapons {
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
         }
 
         private static void AddRecipe()

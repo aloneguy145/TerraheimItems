@@ -33,7 +33,7 @@ namespace Terraheim
             Weapons.AxeForstasca.Init();
             Weapons.AtgeirSilver.Init();
             Weapons.KnifeIron.Init();
-
+            Weapons.ParryingDagger.Init();
             Weapons.PickaxeBlackmetal.Init();
             Weapons.SpearBlackmetal.Init();
             Weapons.Battleaxes.Init();
