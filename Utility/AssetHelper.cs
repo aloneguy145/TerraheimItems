@@ -48,6 +48,7 @@ namespace Terraheim.Utility
         public static GameObject JavelinFlintPrefab;
         public static GameObject JavelinBronzePrefab;
 
+        public static GameObject BowFireExplosionPrefab;
 
         public static void Init()
         {
@@ -90,6 +91,9 @@ namespace Terraheim.Utility
 
             JavelinFlintPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Flint/JavelinFlint.prefab");
             JavelinBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Bronze/JavelinBronze.prefab");
+
+            BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion1.prefab");
+
         }
 
         public static AssetBundle GetAssetBundleFromResources(string filename)

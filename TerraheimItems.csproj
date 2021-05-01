@@ -33,6 +33,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Log.cs" />
+    <Compile Include="Patches\DrawMoveSpeedPatch.cs" />
+    <Compile Include="Patches\FireProjectilePatch.cs" />
     <Compile Include="Patches\MeleeProjectilePatch.cs" />
     <Compile Include="Patches\ProjectileSpawnOnHitPatch.cs" />
     <Compile Include="TerraheimItems.cs" />

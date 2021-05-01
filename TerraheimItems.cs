@@ -9,6 +9,7 @@ namespace Terraheim
     [BepInPlugin(ModGuid, ModName, ModVer)]
     [BepInProcess("valheim.exe")]
     [BepInDependency("ValheimModdingTeam.ValheimLib", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("DasSauerkraut.Terraheim", BepInDependency.DependencyFlags.SoftDependency)]
     class TerraheimItems : BaseUnityPlugin
     {
 
@@ -17,6 +18,7 @@ namespace Terraheim
         private const string ModName = "TerraheimItems";
         private const string ModVer = "1.8.0";
         public static readonly string ModPath = Path.GetDirectoryName(typeof(TerraheimItems).Assembly.Location);
+        public static bool hasTerraheim = false;
 
         private readonly Harmony harmony = new Harmony(ModGuid);
 
@@ -27,6 +29,7 @@ namespace Terraheim
             Instance = this;
             Log.Init(Logger);
             TranslationUtils.LoadTranslations();
+            CheckTerraheim();
             harmony.PatchAll();
             Utility.AssetHelper.Init();
             Weapons.Greatswords.Init();
@@ -47,6 +50,17 @@ namespace Terraheim
             //Weapons.Javelins.Init();
 
             Log.LogInfo("Patching complete");
+        }
+
+        public static void CheckTerraheim()
+        {
+            if (!File.Exists(ModPath + "/Terraheim.dll"))
+            {
+                Log.LogMessage("Terraheim not found!");
+                return;
+            }
+            hasTerraheim = true;
+            Log.LogInfo("Terraheim Found!");
         }
 
     }
