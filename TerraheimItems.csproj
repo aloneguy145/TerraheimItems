@@ -331,8 +331,14 @@
   <ItemGroup>
     <EmbeddedResource Include="bundle_terraheim" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="weaponBalance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(SolutionDir)bin\debug\$(TargetName).dll" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\$(TargetName).dll"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(SolutionDir)bin\debug\$(TargetName).dll" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\$(TargetName).dll"
+copy /Y "$(SolutionDir)bin\debug\weaponBalance.json" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\weaponBalance.json"</PostBuildEvent>
   </PropertyGroup>
 </Project>
