@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -35,13 +36,13 @@ namespace Terraheim.Weapons
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create(CraftingStationPrefabName);
             customRecipe = new CustomRecipe(recipe, true, true);
-            ObjectDBHelper.Add(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.TorchOlympiaPrefab, true);
-            ObjectDBHelper.Add(customItem);
+            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -52,10 +53,10 @@ namespace Terraheim.Weapons
             customRecipeBM = new CustomRecipe(recipeBM, true, true);
             customRecipeSil = new CustomRecipe(recipeSil, true, true);
 
-            ObjectDBHelper.Add(customRecipe);
-            ObjectDBHelper.Add(customRecipeBronze);
-            ObjectDBHelper.Add(customRecipeBM);
-            ObjectDBHelper.Add(customRecipeSil);
+            ItemManager.Instance.AddRecipe(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipeBronze);
+            ItemManager.Instance.AddRecipe(customRecipeBM);
+            ItemManager.Instance.AddRecipe(customRecipeSil);
         }
 
         private static void AddItem()
@@ -82,10 +83,10 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
             }
 
-            ObjectDBHelper.Add(customItem);
-            ObjectDBHelper.Add(customItemBronze);
-            ObjectDBHelper.Add(customItemBM);
-            ObjectDBHelper.Add(customItemSil);
+            ItemManager.Instance.AddItem(customItem);
+            ItemManager.Instance.AddItem(customItemBronze);
+            ItemManager.Instance.AddItem(customItemBM);
+            ItemManager.Instance.AddItem(customItemSil);
         }
     }
 }

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -44,9 +45,10 @@ namespace Terraheim.Weapons
             ironRecipe = new CustomRecipe(irRecipe, true, true);
             blackmetalRecipe = new CustomRecipe(bmRecipe, true, true);
 
-            ObjectDBHelper.Add(folcbrandRecipe);
-            ObjectDBHelper.Add(ironRecipe);
-            ObjectDBHelper.Add(blackmetalRecipe);
+
+            ItemManager.Instance.AddRecipe(folcbrandRecipe);
+            ItemManager.Instance.AddRecipe(ironRecipe);
+            ItemManager.Instance.AddRecipe(blackmetalRecipe);
         }
 
         private static void AddItem()
@@ -68,9 +70,9 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
             }
 
-            ObjectDBHelper.Add(folcbrandItem);
-            ObjectDBHelper.Add(ironItem);
-            ObjectDBHelper.Add(blackmetalItem);
+            ItemManager.Instance.AddItem(folcbrandItem);
+            ItemManager.Instance.AddItem(ironItem);
+            ItemManager.Instance.AddItem(blackmetalItem);
         }
     }
 }

@@ -2,9 +2,10 @@
 using Newtonsoft.Json.Linq;
 
 using BepInEx;
-using ValheimLib.ODB;
 using System.Collections.Generic;
-using ValheimLib;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Utility
 {
@@ -75,6 +76,17 @@ namespace Terraheim.Utility
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create((string)json["station"]);
             recipe.m_amount = (int)json["amountCrafted"];
+        }
+
+        public static bool HasProjectileAttack(string name)
+        {
+            if (name.Contains("_greatsword_fire"))
+                return true;
+            if (name.Contains("_battleaxe_fire"))
+                return true;
+            if (name.Contains("_sword_fire"))
+                return true;
+            return false;
         }
     }
 }

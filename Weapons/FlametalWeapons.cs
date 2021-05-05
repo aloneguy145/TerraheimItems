@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -17,6 +18,8 @@ namespace Terraheim.Weapons
         public static CustomRecipe atgeirRecipe;
         public static CustomItem bowItem;
         public static CustomRecipe bowRecipe;
+        public static CustomItem gaxeItem;
+        public static CustomRecipe gaxeRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -32,26 +35,31 @@ namespace Terraheim.Weapons
             var recipeGS = ScriptableObject.CreateInstance<Recipe>();
             var recipeAtgeir = ScriptableObject.CreateInstance<Recipe>();
             var recipeBow = ScriptableObject.CreateInstance<Recipe>();
+            var recipeGaxe = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
             recipeAtgeir.m_item = AssetHelper.AtgeirFirePrefab.GetComponent<ItemDrop>();
             recipeBow.m_item = AssetHelper.BowFirePrefab.GetComponent<ItemDrop>();
+            recipeGaxe.m_item = AssetHelper.BattleaxeFirePrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipeMace, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeGS, balance["AxeForstasca"]);
+            UtilityFunctions.GetRecipe(ref recipeBow, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["AxeForstasca"]);
+            UtilityFunctions.GetRecipe(ref recipeGaxe, balance["AxeForstasca"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
             atgeirRecipe = new CustomRecipe(recipeAtgeir, true, true);
             bowRecipe = new CustomRecipe(recipeBow, true, true);
+            gaxeRecipe = new CustomRecipe(recipeGaxe, true, true);
 
-            ObjectDBHelper.Add(maceRecipe);
-            ObjectDBHelper.Add(gsRecipe);
-            ObjectDBHelper.Add(atgeirRecipe);
-            ObjectDBHelper.Add(bowRecipe);
+            ItemManager.Instance.AddRecipe(maceRecipe);
+            ItemManager.Instance.AddRecipe(gsRecipe);
+            ItemManager.Instance.AddRecipe(atgeirRecipe);
+            ItemManager.Instance.AddRecipe(bowRecipe);
+            ItemManager.Instance.AddRecipe(gaxeRecipe);
         }
 
         private static void AddItem()
@@ -61,28 +69,36 @@ namespace Terraheim.Weapons
             {
                 UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["AxeForstasca"]);
             }
-            ObjectDBHelper.Add(maceItem);
+            ItemManager.Instance.AddItem(maceItem);
 
             gsItem = new CustomItem(AssetHelper.GreatswordFirePrefab, true);
             if ((bool)balance["AxeForstasca"]["modified"])
             {
                 UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["AxeForstasca"]);
             }
-            ObjectDBHelper.Add(gsItem);
+            ItemManager.Instance.AddItem(gsItem);
 
             atgeirItem = new CustomItem(AssetHelper.AtgeirFirePrefab, true);
             if ((bool)balance["AxeForstasca"]["modified"])
             {
                 UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AxeForstasca"]);
             }
-            ObjectDBHelper.Add(atgeirItem);
+            //atgeirItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack will suffer damage equal to <color=cyan>{(float)balance["AtgeirFire"]["effectVal"]*100}%</color> of their Current HP after 1.3 seconds.";
+            ItemManager.Instance.AddItem(atgeirItem);
 
             bowItem = new CustomItem(AssetHelper.BowFirePrefab, true);
             if ((bool)balance["AxeForstasca"]["modified"])
             {
                 UtilityFunctions.ModifyWeaponDamage(ref bowItem, balance["AxeForstasca"]);
             }
-            ObjectDBHelper.Add(bowItem);
+            ItemManager.Instance.AddItem(bowItem);
+
+            gaxeItem = new CustomItem(AssetHelper.BattleaxeFirePrefab, true);
+            if ((bool)balance["AxeForstasca"]["modified"])
+            {
+                UtilityFunctions.ModifyWeaponDamage(ref gaxeItem, balance["AxeForstasca"]);
+            }
+            ItemManager.Instance.AddItem(gaxeItem);
         }
     }
 }

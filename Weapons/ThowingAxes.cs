@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -54,11 +55,11 @@ namespace Terraheim.Weapons
             customRecipeSilver = new CustomRecipe(recipeSilver, true, true);
             customRecipeBlackmetal = new CustomRecipe(recipeBlackmetal, true, true);
 
-            ObjectDBHelper.Add(customRecipeFlint);
-            ObjectDBHelper.Add(customRecipeBronze);
-            ObjectDBHelper.Add(customRecipeIron);
-            ObjectDBHelper.Add(customRecipeSilver);
-            ObjectDBHelper.Add(customRecipeBlackmetal);
+            ItemManager.Instance.AddRecipe(customRecipeFlint);
+            ItemManager.Instance.AddRecipe(customRecipeBronze);
+            ItemManager.Instance.AddRecipe(customRecipeIron);
+            ItemManager.Instance.AddRecipe(customRecipeSilver);
+            ItemManager.Instance.AddRecipe(customRecipeBlackmetal);
         }
 
         private static void AddItem()
@@ -90,11 +91,11 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref customItemBlackmetal, balance["ThrowingAxeBlackmetal"]);
             }
 
-            ObjectDBHelper.Add(customItemFlint);
-            ObjectDBHelper.Add(customItemBronze);
-            ObjectDBHelper.Add(customItemIron);
-            ObjectDBHelper.Add(customItemSilver);
-            ObjectDBHelper.Add(customItemBlackmetal);
+            ItemManager.Instance.AddItem(customItemFlint);
+            ItemManager.Instance.AddItem(customItemBronze);
+            ItemManager.Instance.AddItem(customItemIron);
+            ItemManager.Instance.AddItem(customItemSilver);
+            ItemManager.Instance.AddItem(customItemBlackmetal);
         }
     }
 }

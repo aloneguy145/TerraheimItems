@@ -31,6 +31,7 @@ namespace Terraheim.Utility
         public static GameObject GreatswordFirePrefab;
         public static GameObject AtgeirFirePrefab;
         public static GameObject BowFirePrefab;
+        public static GameObject BattleaxeFirePrefab;
 
         public static GameObject TorchOlympiaPrefab;
         public static GameObject ParryingDaggerPrefab;
@@ -49,6 +50,11 @@ namespace Terraheim.Utility
         public static GameObject JavelinBronzePrefab;
 
         public static GameObject BowFireExplosionPrefab;
+        public static GameObject VFXAtgeirFireHitPrefab;
+        public static AudioClip SFXAtgeirFireHitPrefab;
+
+        public static GameObject SwordIronFireProjPrefab;
+
 
         public static void Init()
         {
@@ -75,6 +81,7 @@ namespace Terraheim.Utility
             GreatswordFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greatsword/GreatswordFire.prefab");
             AtgeirFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/atgeir/AtgeirFire.prefab");
             BowFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/BowFireTH.prefab");
+            BattleaxeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greataxe/BattleaxeFireTH.prefab");
 
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
             ParryingDaggerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/parryingdagger/ShieldSilverDagger.prefab");
@@ -92,8 +99,11 @@ namespace Terraheim.Utility
             JavelinFlintPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Flint/JavelinFlint.prefab");
             JavelinBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Bronze/JavelinBronze.prefab");
 
-            BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion1.prefab");
+            SwordIronFireProjPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/swordProj/swordironfire_projectile.prefab");
 
+            BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion1.prefab");
+            VFXAtgeirFireHitPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Effects/vfx_flametal_atgeir_hit.prefab");
+            SFXAtgeirFireHitPrefab = TerraheimAssetBundle.LoadAsset<AudioClip>("Assets/CustomItems/flametal/atgeir/Flame_SpitFire3.wav");
         }
 
         public static AssetBundle GetAssetBundleFromResources(string filename)

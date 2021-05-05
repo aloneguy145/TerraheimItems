@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -71,9 +72,9 @@ namespace Terraheim.Weapons
             customRecipeFrost = new CustomRecipe(recipeFrost, true, true);
             customRecipeLightning = new CustomRecipe(recipeLightning, true, true);
 
-            ObjectDBHelper.Add(customRecipeFire);
-            ObjectDBHelper.Add(customRecipeFrost);
-            ObjectDBHelper.Add(customRecipeLightning);
+            ItemManager.Instance.AddRecipe(customRecipeFire);
+            ItemManager.Instance.AddRecipe(customRecipeFrost);
+            ItemManager.Instance.AddRecipe(customRecipeLightning);
         }
 
         private static void AddItem()
@@ -82,9 +83,9 @@ namespace Terraheim.Weapons
             customItemFrost = new CustomItem(AssetHelper.BombFrostPrefab, true);
             customItemLightning = new CustomItem(AssetHelper.BombLightningPrefab, true);
 
-            ObjectDBHelper.Add(customItemFire);
-            ObjectDBHelper.Add(customItemFrost);
-            ObjectDBHelper.Add(customItemLightning);
+            ItemManager.Instance.AddItem(customItemFire);
+            ItemManager.Instance.AddItem(customItemFrost);
+            ItemManager.Instance.AddItem(customItemLightning);
         }
     }
 }

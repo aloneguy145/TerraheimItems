@@ -2,7 +2,12 @@
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Terraheim.StatusEffects;
 using Terraheim.Utility;
+using UnityEngine;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim
 {
@@ -29,6 +34,7 @@ namespace Terraheim
             Instance = this;
             Log.Init(Logger);
             TranslationUtils.LoadTranslations();
+            SetupStatusEffects();
             CheckTerraheim();
             harmony.PatchAll();
             Utility.AssetHelper.Init();
@@ -49,7 +55,14 @@ namespace Terraheim
             Weapons.ThrowingAxes.Init();
             //Weapons.Javelins.Init();
 
+            Weapons.ModWeapons.Init();
+
             Log.LogInfo("Patching complete");
+        }
+
+        public static void SetupStatusEffects()
+        {
+            ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_HealthPercentDamage>(), fixReference: true));
         }
 
         public static void CheckTerraheim()
