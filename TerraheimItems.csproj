@@ -61,10 +61,6 @@
     <Compile Include="Weapons\Greatswords.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="assembly_googleanalytics">
       <HintPath>Libs\assembly_googleanalytics.dll</HintPath>
     </Reference>
@@ -88,9 +84,6 @@
     </Reference>
     <Reference Include="assembly_utils">
       <HintPath>Libs\assembly_utils.dll</HintPath>
-    </Reference>
-    <Reference Include="assembly_valheim">
-      <HintPath>Libs\assembly_valheim.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,12 +128,6 @@
     </Reference>
     <Reference Include="Mono.Security">
       <HintPath>Libs\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>Libs\MonoMod.RuntimeDetour.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoMod.Utils">
-      <HintPath>Libs\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

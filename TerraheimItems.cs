@@ -37,17 +37,29 @@ namespace Terraheim
             SetupStatusEffects();
             CheckTerraheim();
             harmony.PatchAll();
+            Log.LogInfo(1);
             Utility.AssetHelper.Init();
+            Log.LogInfo(2);
             Weapons.Greatswords.Init();
+            Log.LogInfo(3);
             Weapons.AxeForstasca.Init();
+            Log.LogInfo(4);
             Weapons.AtgeirSilver.Init();
+            Log.LogInfo(5);
             Weapons.KnifeIron.Init();
+            Log.LogInfo(6);
             Weapons.ParryingDagger.Init();
+            Log.LogInfo(7);
             Weapons.BowBlackmetal.Init();
+            Log.LogInfo(8);
             Weapons.PickaxeBlackmetal.Init();
+            Log.LogInfo(9);
             Weapons.SpearBlackmetal.Init();
+            Log.LogInfo(10);
             Weapons.Battleaxes.Init();
+            Log.LogInfo(11);
             Weapons.FlametalWeapons.Init();
+            Log.LogInfo(12);
 
             Weapons.TorchOlympia.Init();
 

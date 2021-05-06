@@ -86,6 +86,8 @@ namespace Terraheim.Utility
                 return true;
             if (name.Contains("_sword_fire"))
                 return true;
+            if (name.Contains("_sledge_fire"))
+                return true;
             return false;
         }
     }

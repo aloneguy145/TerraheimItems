@@ -12,6 +12,7 @@ class MeleeProjectilePatch
     {
         if (Terraheim.Utility.UtilityFunctions.HasProjectileAttack(__instance.GetWeapon().m_shared.m_name) && __instance.m_attackAnimation == __instance.GetWeapon().m_shared.m_secondaryAttack.m_attackAnimation)
         {
+            Log.LogInfo("Melee Projectile");
             __instance.ProjectileAttackTriggered();
         }
         else if (__instance.GetWeapon().m_shared.m_name.Contains("_atgeir_fire"))

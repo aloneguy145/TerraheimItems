@@ -1,6 +1,6 @@
 {
-    "GreatswordStartAnimationSpeedAdjust": 1.8,
-    "GreatswordAnimationSpeedAdjust": 1.4,
+    "GreatswordStartAnimationSpeedAdjust": 1.6,
+    "GreatswordAnimationSpeedAdjust": 1.2,
     "ThrowingAxeAnimationSpeedAdjust": 3,
     "BattleaxeBronze": {
         "modified": false,
