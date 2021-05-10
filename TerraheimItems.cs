@@ -75,6 +75,7 @@ namespace Terraheim
         public static void SetupStatusEffects()
         {
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_HealthPercentDamage>(), fixReference: true));
+            ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_ChainExplosionListener>(), fixReference: true));
         }
 
         public static void CheckTerraheim()

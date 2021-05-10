@@ -5,6 +5,7 @@ using UnityEngine;
 using Jotunn;
 using Jotunn.Entities;
 using Jotunn.Managers;
+using Terraheim.StatusEffects;
 
 namespace Terraheim.Weapons
 {
@@ -22,6 +23,8 @@ namespace Terraheim.Weapons
         public static CustomRecipe gaxeRecipe;
         public static CustomItem sledgeItem;
         public static CustomRecipe sledgeRecipe;
+        public static CustomItem axeItem;
+        public static CustomRecipe axeRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -39,6 +42,7 @@ namespace Terraheim.Weapons
             var recipeBow = ScriptableObject.CreateInstance<Recipe>();
             var recipeGaxe = ScriptableObject.CreateInstance<Recipe>();
             var recipeSledge = ScriptableObject.CreateInstance<Recipe>();
+            var recipeAxe = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
@@ -46,6 +50,7 @@ namespace Terraheim.Weapons
             recipeBow.m_item = AssetHelper.BowFirePrefab.GetComponent<ItemDrop>();
             recipeGaxe.m_item = AssetHelper.BattleaxeFirePrefab.GetComponent<ItemDrop>();
             recipeSledge.m_item = AssetHelper.SledgeFirePrefab.GetComponent<ItemDrop>();
+            recipeAxe.m_item = AssetHelper.AxeFirePrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipeMace, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeGS, balance["AxeForstasca"]);
@@ -53,6 +58,7 @@ namespace Terraheim.Weapons
             UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeGaxe, balance["AxeForstasca"]);
             UtilityFunctions.GetRecipe(ref recipeSledge, balance["AxeForstasca"]);
+            UtilityFunctions.GetRecipe(ref recipeAxe, balance["AxeForstasca"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
@@ -60,6 +66,7 @@ namespace Terraheim.Weapons
             bowRecipe = new CustomRecipe(recipeBow, true, true);
             gaxeRecipe = new CustomRecipe(recipeGaxe, true, true);
             sledgeRecipe = new CustomRecipe(recipeSledge, true, true);
+            axeRecipe = new CustomRecipe(recipeAxe, true, true);
 
             ItemManager.Instance.AddRecipe(maceRecipe);
             ItemManager.Instance.AddRecipe(gsRecipe);
@@ -67,6 +74,7 @@ namespace Terraheim.Weapons
             ItemManager.Instance.AddRecipe(bowRecipe);
             ItemManager.Instance.AddRecipe(gaxeRecipe);
             ItemManager.Instance.AddRecipe(sledgeRecipe);
+            ItemManager.Instance.AddRecipe(axeRecipe);
         }
 
         private static void AddItem()
@@ -77,6 +85,7 @@ namespace Terraheim.Weapons
             bowItem = new CustomItem(AssetHelper.BowFirePrefab, true);
             gaxeItem = new CustomItem(AssetHelper.BattleaxeFirePrefab, true);
             sledgeItem = new CustomItem(AssetHelper.SledgeFirePrefab, true);
+            axeItem = new CustomItem(AssetHelper.AxeFirePrefab, true);
 
             if ((bool)balance["AxeForstasca"]["modified"])
             {
@@ -108,23 +117,29 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref sledgeItem, balance["AxeForstasca"]);
             }
 
-           /* maceItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Mace</i>\n" + maceItem.ItemDrop.m_itemData.m_shared.m_description;
-            maceItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack are Pinned for seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.";
+            if ((bool)balance["AxeForstasca"]["modified"])
+            {
+                UtilityFunctions.ModifyWeaponDamage(ref axeItem, balance["AxeForstasca"]);
+            }
+            axeItem.ItemDrop.m_itemData.m_shared.m_attackStatusEffect = ScriptableObject.CreateInstance<SE_ChainExplosionListener>();
 
-            gsItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Greatsword</i>\n" + gsItem.ItemDrop.m_itemData.m_shared.m_description;
-            gsItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing fire damage.";
-            
-            atgeirItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Atgeir</i>\n" + atgeirItem.ItemDrop.m_itemData.m_shared.m_description;
-            atgeirItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack will suffer damage equal to <color=cyan>{(float)balance["AtgeirFire"]["effectVal"]*100}%</color> of their Current HP after 1.3 seconds.";
+            /* maceItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Mace</i>\n" + maceItem.ItemDrop.m_itemData.m_shared.m_description;
+             maceItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack are Pinned for seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.";
 
-            bowItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Bow</i>\n" + bowItem.ItemDrop.m_itemData.m_shared.m_description;
-            bowItem.ItemDrop.m_itemData.m_shared.m_description += $"\nArrows fired by Gwynttorrwr explode on impact. While drawing the bow, your movement speed is greatly reduced.";
+             gsItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Greatsword</i>\n" + gsItem.ItemDrop.m_itemData.m_shared.m_description;
+             gsItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing fire damage.";
 
-            gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Battleaxe</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
-            gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary fires a short range burst of fireballs.";
+             atgeirItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Atgeir</i>\n" + atgeirItem.ItemDrop.m_itemData.m_shared.m_description;
+             atgeirItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack will suffer damage equal to <color=cyan>{(float)balance["AtgeirFire"]["effectVal"]*100}%</color> of their Current HP after 1.3 seconds.";
 
-            gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Sledgehammer</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
-            gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nThe force at which the hammer is flung into the earth leaves a firey puddle for 5 seconds after a slam.";*/
+             bowItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Bow</i>\n" + bowItem.ItemDrop.m_itemData.m_shared.m_description;
+             bowItem.ItemDrop.m_itemData.m_shared.m_description += $"\nArrows fired by Gwynttorrwr explode on impact. While drawing the bow, your movement speed is greatly reduced.";
+
+             gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Battleaxe</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
+             gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary fires a short range burst of fireballs.";
+
+             gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Sledgehammer</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
+             gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nThe force at which the hammer is flung into the earth leaves a firey puddle for 5 seconds after a slam.";*/
 
             ItemManager.Instance.AddItem(maceItem);
             ItemManager.Instance.AddItem(gsItem);
@@ -132,6 +147,7 @@ namespace Terraheim.Weapons
             ItemManager.Instance.AddItem(bowItem);
             ItemManager.Instance.AddItem(gaxeItem);
             ItemManager.Instance.AddItem(sledgeItem);
+            ItemManager.Instance.AddItem(axeItem);
         }
     }
 }
