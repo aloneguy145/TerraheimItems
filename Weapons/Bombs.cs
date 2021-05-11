@@ -43,7 +43,7 @@ namespace Terraheim.Weapons
                 MockRequirement.Create("LeatherScraps", 5),
             };
             recipeFire.m_amount = 5;
-
+            recipeFire.name = "Recipe_BombFire";
             var itemReqsFrost = new List<Piece.Requirement>
             {
                 MockRequirement.Create("FreezeGland", 5),
@@ -51,6 +51,7 @@ namespace Terraheim.Weapons
                 MockRequirement.Create("LeatherScraps", 5),
             };
             recipeFrost.m_amount = 5;
+            recipeFrost.name = "Recipe_BombFrost";
 
             var itemReqsLightning = new List<Piece.Requirement>
             {
@@ -59,6 +60,7 @@ namespace Terraheim.Weapons
                 MockRequirement.Create("LeatherScraps", 5),
             };
             recipeLightning.m_amount = 5;
+            recipeLightning.name = "Recipe_BombLightning";
 
             recipeFire.m_resources = itemReqsFire.ToArray();
             recipeFrost.m_resources = itemReqsFrost.ToArray();

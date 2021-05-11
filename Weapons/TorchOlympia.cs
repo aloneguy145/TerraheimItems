@@ -32,7 +32,7 @@ namespace Terraheim.Weapons
                 MockRequirement.Create("YagluthDrop", 100),
                 MockRequirement.Create("YmirRemains", 20),
             };
-
+            recipe.name = "Recipe_Secret";
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create(CraftingStationPrefabName);
             customRecipe = new CustomRecipe(recipe, true, true);

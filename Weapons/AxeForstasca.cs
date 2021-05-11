@@ -37,11 +37,12 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.AxeForstascaPrefab, true);
-            if ((bool)balance["AxeForstasca"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxeForstasca"]);
+            
+            if ((bool)balance["AxeForstasca"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxeForstasca"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

@@ -37,11 +37,11 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.SpearBlackmetalPrefab, true);
-            if ((bool)balance["SpearBlackmetal"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["SpearBlackmetal"]);
+            if ((bool)balance["SpearBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["SpearBlackmetal"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

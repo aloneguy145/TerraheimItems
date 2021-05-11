@@ -1,11 +1,15 @@
-﻿using System.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
 namespace Terraheim.Utility
 {
+
     class AssetHelper
     {
+        static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
+
         public const string AssetBundleName = "bundle_terraheim";
         public static AssetBundle TerraheimAssetBundle;
 
@@ -34,6 +38,10 @@ namespace Terraheim.Utility
         public static GameObject BattleaxeFirePrefab;
         public static GameObject SledgeFirePrefab;
         public static GameObject AxeFirePrefab;
+        public static GameObject KnifeFirePrefab;
+        public static GameObject SpearFirePrefab;
+        public static GameObject ThrowingAxeFirePrefab;
+        public static GameObject ArrowGreatFirePrefab;
 
         public static GameObject TorchOlympiaPrefab;
         public static GameObject ParryingDaggerPrefab;
@@ -82,12 +90,22 @@ namespace Terraheim.Utility
 
             MaceFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/mace/MaceFireTH.prefab");
             GreatswordFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greatsword/GreatswordFireTH.prefab");
+            GreatswordFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_secondaryAttack.m_attackProjectile.GetComponent<Projectile>()
+                .m_spawnOnHit.GetComponent<Aoe>().m_damage.m_fire = (float)balance["GreatswordFire"]["effectVal"];
             AtgeirFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/atgeir/AtgeirFireTH.prefab");
             BowFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/BowFireTH.prefab");
             BattleaxeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/greataxe/BattleaxeFireTH.prefab");
+            BattleaxeFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_secondaryAttack.m_attackProjectile.GetComponent<Projectile>()
+                .m_damage.m_fire = (float)balance["BattleaxeFire"]["effectVal"];
             SledgeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/sledge/SledgeFireTH.prefab");
+            SledgeFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_secondaryAttack.m_attackProjectile.GetComponent<Projectile>()
+                .m_spawnOnHit.GetComponent<Aoe>().m_damage.m_fire = (float)balance["SledgeFire"]["effectVal"];
             AxeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/axe/AxeFireTH.prefab");
-
+            KnifeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/knife/KnifeFireTH.prefab");
+            SpearFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/spear/SpearFireTH.prefab");
+            ThrowingAxeFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/throwingaxe/ThrowingAxeFire.prefab");
+            ArrowGreatFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/arrow/ArrowGreatFireTH.prefab");
+            
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
             ParryingDaggerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/parryingdagger/ShieldSilverDagger.prefab");
 
@@ -107,6 +125,7 @@ namespace Terraheim.Utility
             SwordIronFireProjPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/swordProj/swordironfire_projectile.prefab");
 
             BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion1.prefab");
+            BowFireExplosionPrefab.GetComponent<Aoe>().m_damage.m_fire = (float)balance["BowFire"]["effectVal"];
             AxeFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/axe/axeFire_explosion.prefab");
             AxeFireExplosionPrefab.GetComponent<Aoe>().m_statusEffect = "ChainExplosionListener";
             VFXAtgeirFireHitPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Effects/vfx_flametal_atgeir_hit.prefab");

@@ -37,11 +37,11 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.PickaxeBlackmetalPrefab, true);
-            if ((bool)balance["PickaxeBlackmetal"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["PickaxeBlackmetal"]);
+            if ((bool)balance["PickaxeBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["PickaxeBlackmetal"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

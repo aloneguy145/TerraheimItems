@@ -38,13 +38,12 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.AtgeirSilverPrefab, true);
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AtgeirSilver"]);
 
-            if ((bool)balance["AtgeirSilver"]["modified"])
+            if ((bool)balance["AtgeirSilver"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AtgeirSilver"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

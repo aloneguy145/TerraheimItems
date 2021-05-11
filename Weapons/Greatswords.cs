@@ -56,23 +56,23 @@ namespace Terraheim.Weapons
             folcbrandItem = new CustomItem(AssetHelper.FolcbrandPrefab, true);
             ironItem = new CustomItem(AssetHelper.GreatswordIronPrefab, true);
             blackmetalItem = new CustomItem(AssetHelper.GreatswordBlackmetalPrefab, true);
+            UtilityFunctions.ModifyWeaponDamage(ref folcbrandItem, balance["GreatswordFolcbrand"]);
+            UtilityFunctions.ModifyWeaponDamage(ref ironItem, balance["GreatswordIron"]);
+            UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
 
-            if ((bool)balance["GreatswordFolcbrand"]["modified"])
+            if ((bool)balance["GreatswordFolcbrand"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref folcbrandItem, balance["GreatswordFolcbrand"]);
+                ItemManager.Instance.AddItem(folcbrandItem);
             }
-            if ((bool)balance["GreatswordIron"]["modified"])
+            if ((bool)balance["GreatswordIron"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref ironItem, balance["GreatswordIron"]);
+                ItemManager.Instance.AddItem(ironItem);
             }
-            if ((bool)balance["GreatswordBlackmetal"]["modified"])
+            if ((bool)balance["GreatswordBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
+                ItemManager.Instance.AddItem(blackmetalItem);
             }
 
-            ItemManager.Instance.AddItem(folcbrandItem);
-            ItemManager.Instance.AddItem(ironItem);
-            ItemManager.Instance.AddItem(blackmetalItem);
         }
     }
 }

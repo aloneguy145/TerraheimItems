@@ -39,11 +39,11 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.BowBlackmetalPrefab, true);
-            if ((bool)balance["BowBlackmetal"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["BowBlackmetal"]);
+            if ((bool)balance["BowBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["BowBlackmetal"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

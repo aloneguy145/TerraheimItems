@@ -95,9 +95,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="CombatEvolved">
-      <HintPath>..\Terraheim\Libs\CombatEvolved.dll</HintPath>
-    </Reference>
     <Reference Include="MMHOOK_assembly_googleanalytics">
       <HintPath>Libs\MMHOOK_assembly_googleanalytics.dll</HintPath>
     </Reference>
@@ -136,6 +133,10 @@
       <HintPath>Libs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="Terraheim, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Terraheim\Libs\Terraheim.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\UnityEngine.dll</HintPath>

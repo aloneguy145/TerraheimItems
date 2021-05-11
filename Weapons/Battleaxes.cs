@@ -65,28 +65,28 @@ namespace Terraheim.Weapons
             customItemBronze = new CustomItem(AssetHelper.BattleaxeBronzePrefab, true);
             customItemBM = new CustomItem(AssetHelper.GreateaxeBlackmetalPrefab, true);
             customItemSil = new CustomItem(AssetHelper.BattleaxeSilverPrefab, true);
+            
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["BattleaxeBronze"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBM, balance["BattleaxeBlackmetal"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemSil, balance["BattleaxeSilver"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
 
-            if ((bool)balance["BattleaxeBronze"]["modified"])
+            if ((bool)balance["BattleaxeBronze"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["BattleaxeBronze"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            if ((bool)balance["BattleaxeBlackmetal"]["modified"])
+            if ((bool)balance["BattleaxeBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBM, balance["BattleaxeBlackmetal"]);
+                ItemManager.Instance.AddItem(customItemBronze);
             }
-            if ((bool)balance["BattleaxeSilver"]["modified"])
+            if ((bool)balance["BattleaxeSilver"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemSil, balance["BattleaxeSilver"]);
+                ItemManager.Instance.AddItem(customItemBM);
             }
-            if ((bool)balance["AxehammerBlackmetal"]["modified"])
+            if ((bool)balance["AxehammerBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
+                ItemManager.Instance.AddItem(customItemSil);
             }
-
-            ItemManager.Instance.AddItem(customItem);
-            ItemManager.Instance.AddItem(customItemBronze);
-            ItemManager.Instance.AddItem(customItemBM);
-            ItemManager.Instance.AddItem(customItemSil);
         }
     }
 }

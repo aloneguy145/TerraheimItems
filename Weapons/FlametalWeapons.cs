@@ -25,6 +25,14 @@ namespace Terraheim.Weapons
         public static CustomRecipe sledgeRecipe;
         public static CustomItem axeItem;
         public static CustomRecipe axeRecipe;
+        public static CustomItem knifeItem;
+        public static CustomRecipe knifeRecipe;
+        public static CustomItem spearItem;
+        public static CustomRecipe spearRecipe;
+        public static CustomItem taxeItem;
+        public static CustomRecipe taxeRecipe;
+        public static CustomItem arrowItem;
+        public static CustomRecipe arrowRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -43,6 +51,10 @@ namespace Terraheim.Weapons
             var recipeGaxe = ScriptableObject.CreateInstance<Recipe>();
             var recipeSledge = ScriptableObject.CreateInstance<Recipe>();
             var recipeAxe = ScriptableObject.CreateInstance<Recipe>();
+            var recipeKnife = ScriptableObject.CreateInstance<Recipe>();
+            var recipeSpear = ScriptableObject.CreateInstance<Recipe>();
+            var recipeTAxe = ScriptableObject.CreateInstance<Recipe>();
+            var recipeArrow = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
@@ -51,14 +63,22 @@ namespace Terraheim.Weapons
             recipeGaxe.m_item = AssetHelper.BattleaxeFirePrefab.GetComponent<ItemDrop>();
             recipeSledge.m_item = AssetHelper.SledgeFirePrefab.GetComponent<ItemDrop>();
             recipeAxe.m_item = AssetHelper.AxeFirePrefab.GetComponent<ItemDrop>();
+            recipeKnife.m_item = AssetHelper.KnifeFirePrefab.GetComponent<ItemDrop>();
+            recipeSpear.m_item = AssetHelper.SpearFirePrefab.GetComponent<ItemDrop>();
+            recipeTAxe.m_item = AssetHelper.ThrowingAxeFirePrefab.GetComponent<ItemDrop>();
+            recipeArrow.m_item = AssetHelper.ArrowGreatFirePrefab.GetComponent<ItemDrop>();
 
-            UtilityFunctions.GetRecipe(ref recipeMace, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeGS, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeBow, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeGaxe, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeSledge, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeAxe, balance["AxeForstasca"]);
+            UtilityFunctions.GetRecipe(ref recipeMace, balance["MaceFire"]);
+            UtilityFunctions.GetRecipe(ref recipeGS, balance["GreatswordFire"]);
+            UtilityFunctions.GetRecipe(ref recipeBow, balance["AtgeirFire"]);
+            UtilityFunctions.GetRecipe(ref recipeAtgeir, balance["BowFire"]);
+            UtilityFunctions.GetRecipe(ref recipeGaxe, balance["BattleaxeFire"]);
+            UtilityFunctions.GetRecipe(ref recipeSledge, balance["SledgeFire"]);
+            UtilityFunctions.GetRecipe(ref recipeAxe, balance["AxeFire"]);
+            UtilityFunctions.GetRecipe(ref recipeKnife, balance["KnifeFire"]);
+            UtilityFunctions.GetRecipe(ref recipeSpear, balance["SpearFire"]);
+            UtilityFunctions.GetRecipe(ref recipeTAxe, balance["ThrowingAxeFire"]);
+            UtilityFunctions.GetRecipe(ref recipeArrow, balance["ArrowGreatFire"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
@@ -67,6 +87,10 @@ namespace Terraheim.Weapons
             gaxeRecipe = new CustomRecipe(recipeGaxe, true, true);
             sledgeRecipe = new CustomRecipe(recipeSledge, true, true);
             axeRecipe = new CustomRecipe(recipeAxe, true, true);
+            knifeRecipe = new CustomRecipe(recipeKnife, true, true);
+            spearRecipe = new CustomRecipe(recipeSpear, true, true);
+            taxeRecipe = new CustomRecipe(recipeTAxe, true, true);
+            arrowRecipe = new CustomRecipe(recipeArrow, true, true);
 
             ItemManager.Instance.AddRecipe(maceRecipe);
             ItemManager.Instance.AddRecipe(gsRecipe);
@@ -75,6 +99,10 @@ namespace Terraheim.Weapons
             ItemManager.Instance.AddRecipe(gaxeRecipe);
             ItemManager.Instance.AddRecipe(sledgeRecipe);
             ItemManager.Instance.AddRecipe(axeRecipe);
+            ItemManager.Instance.AddRecipe(knifeRecipe);
+            ItemManager.Instance.AddRecipe(spearRecipe);
+            ItemManager.Instance.AddRecipe(taxeRecipe);
+            ItemManager.Instance.AddRecipe(arrowRecipe);
         }
 
         private static void AddItem()
@@ -86,42 +114,78 @@ namespace Terraheim.Weapons
             gaxeItem = new CustomItem(AssetHelper.BattleaxeFirePrefab, true);
             sledgeItem = new CustomItem(AssetHelper.SledgeFirePrefab, true);
             axeItem = new CustomItem(AssetHelper.AxeFirePrefab, true);
+            knifeItem = new CustomItem(AssetHelper.KnifeFirePrefab, true);
+            spearItem = new CustomItem(AssetHelper.SpearFirePrefab, true);
+            taxeItem = new CustomItem(AssetHelper.ThrowingAxeFirePrefab, true);
+            arrowItem = new CustomItem(AssetHelper.ArrowGreatFirePrefab, true);
 
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref bowItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref gaxeItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref sledgeItem, balance["AxeForstasca"]);
-            }
-
-            if ((bool)balance["AxeForstasca"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref axeItem, balance["AxeForstasca"]);
-            }
+            UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["MaceFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["GreatswordFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AtgeirFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref bowItem, balance["BowFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref gaxeItem, balance["BattleaxeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref sledgeItem, balance["SledgeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref axeItem, balance["AxeFire"]);
             axeItem.ItemDrop.m_itemData.m_shared.m_attackStatusEffect = ScriptableObject.CreateInstance<SE_ChainExplosionListener>();
+            UtilityFunctions.ModifyWeaponDamage(ref knifeItem, balance["KnifeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref spearItem, balance["SpearFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
+
+            if ((bool)balance["MaceFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(maceItem);
+            }
+
+            if ((bool)balance["GreatswordFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(gsItem);
+            }
+
+            if ((bool)balance["AtgeirFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(atgeirItem);
+            }
+
+            if ((bool)balance["BowFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(bowItem);
+            }
+
+            if ((bool)balance["BattleaxeFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(gaxeItem);
+            }
+
+            if ((bool)balance["SledgeFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(sledgeItem);
+            }
+
+            if ((bool)balance["AxeFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(axeItem);
+            }
+
+            if ((bool)balance["KnifeFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(knifeItem);
+            }
+
+            if ((bool)balance["SpearFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(spearItem);
+            }
+
+            if ((bool)balance["ThrowingAxeFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(taxeItem);
+            }
+
+            if ((bool)balance["ArrowGreatFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(arrowItem);
+            }
 
             /* maceItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Mace</i>\n" + maceItem.ItemDrop.m_itemData.m_shared.m_description;
              maceItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack are Pinned for seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.";
@@ -141,13 +205,6 @@ namespace Terraheim.Weapons
              gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Sledgehammer</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
              gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nThe force at which the hammer is flung into the earth leaves a firey puddle for 5 seconds after a slam.";*/
 
-            ItemManager.Instance.AddItem(maceItem);
-            ItemManager.Instance.AddItem(gsItem);
-            ItemManager.Instance.AddItem(atgeirItem);
-            ItemManager.Instance.AddItem(bowItem);
-            ItemManager.Instance.AddItem(gaxeItem);
-            ItemManager.Instance.AddItem(sledgeItem);
-            ItemManager.Instance.AddItem(axeItem);
         }
     }
 }

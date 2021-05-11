@@ -36,11 +36,12 @@ namespace Terraheim.Weapons {
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.KnifeIronPrefab, true);
-            if ((bool)balance["KnifeIron"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["KnifeIron"]);
+            
+            if ((bool)balance["KnifeIron"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["KnifeIron"]);
+                 ItemManager.Instance.AddItem(customItem);
             }
-            ItemManager.Instance.AddItem(customItem);
         }
     }
 }

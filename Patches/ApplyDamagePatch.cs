@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using Terraheim;
 using Terraheim.Utility;
@@ -9,7 +10,8 @@ namespace TerraheimItems.Patches
     [HarmonyPatch]
     class ApplyDamagePatch
     {
-        
+        static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SEMan), "OnDamaged")]
         public static void DamagePrefix(SEMan __instance, HitData hit)
@@ -28,7 +30,7 @@ namespace TerraheimItems.Patches
         {
             if (characterDrop.m_character.GetSEMan().HaveStatusEffect("ChainExplosionListener"))
             {
-                explosionList.Add(__instance.GetInstanceID(), characterDrop.m_character.GetMaxHealth()*.5f);
+                explosionList.Add(__instance.GetInstanceID(), characterDrop.m_character.GetMaxHealth()* (float)balance["AxeFire"]["effectVal"]);
             }
         }
 
