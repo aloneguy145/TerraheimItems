@@ -119,17 +119,17 @@ namespace Terraheim.Weapons
             taxeItem = new CustomItem(AssetHelper.ThrowingAxeFirePrefab, true);
             arrowItem = new CustomItem(AssetHelper.ArrowGreatFirePrefab, true);
 
-            UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["MaceFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["GreatswordFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AtgeirFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref bowItem, balance["BowFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref gaxeItem, balance["BattleaxeFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref sledgeItem, balance["SledgeFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref axeItem, balance["AxeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["MaceFire"], "<i>Mace</i>\n", $"\n\nFoes struck by its secondary attack are Pinned for <color=cyan>{(float)balance["MaceFire"]["effectVal"]}</color> seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.");
+            UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["GreatswordFire"], "<i>Greatsword</i>\n", $"\n\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing <color=cyan>{(float)balance["GreatswordFire"]["effectVal"]}</color> fire damage.");
+            UtilityFunctions.ModifyWeaponDamage(ref atgeirItem, balance["AtgeirFire"], "<i>Atgeir</i>\n", $"\n\nFoes struck by its secondary attack will suffer damage equal to <color=cyan>{(float)balance["AtgeirFire"]["effectVal"] * 100}%</color> of their Current HP after 1.3 seconds.");
+            UtilityFunctions.ModifyWeaponDamage(ref bowItem, balance["BowFire"], "<i>Bow</i>\n", "\n\nArrows fired by Gwynttorrwr explode on impact. While drawing the bow, your movement speed is greatly reduced.");
+            UtilityFunctions.ModifyWeaponDamage(ref gaxeItem, balance["BattleaxeFire"], "<i>Battleaxe</i>\n", $"\n\nIts secondary fires a short range burst of fireballs. Each fireball deals <color=cyan>{(float)balance["BattleaxeFire"]["effectVal"]}</color> fire damage.");
+            UtilityFunctions.ModifyWeaponDamage(ref sledgeItem, balance["SledgeFire"], "<i>Sledgehammer</i>\n", $"\n\nThe force at which the hammer is flung into the earth leaves a firey puddle for 5 seconds after a slam.");
+            UtilityFunctions.ModifyWeaponDamage(ref axeItem, balance["AxeFire"], "<i>Axe</i>\n", $"\n\nKilling a foe imbues their corpse with volatile energy, causing them to explode soon after death. The explosion deals damage equal to <color=cyan>{(float)balance["AxeFire"]["effectVal"] * 100}%</color> of the foes max hp. These explosions can chain.");
             axeItem.ItemDrop.m_itemData.m_shared.m_attackStatusEffect = ScriptableObject.CreateInstance<SE_ChainExplosionListener>();
-            UtilityFunctions.ModifyWeaponDamage(ref knifeItem, balance["KnifeFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref spearItem, balance["SpearFire"]);
-            UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"]);
+            UtilityFunctions.ModifyWeaponDamage(ref knifeItem, balance["KnifeFire"], "<i>Knife</i>\n", $"\n\nStriking a foe with your secondary attack Marks them for 1 hit. Marked enemies suffer <color=cyan>{(float)balance["KnifeFire"]["effectVal"] * 100}%</color> more damage.");
+            UtilityFunctions.ModifyWeaponDamage(ref spearItem, balance["SpearFire"], "<i>Spear</i>\n", $"\n\nHurling Rhongomiant across the battlefield will cause you to teleport to whatever location the spear landed.");
+            UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"], "<i>Throwing Axe</i>\n", $"\n\nTyrfing hurls spectral versions of itself, depleting durability, not ammo.");
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
 
             if ((bool)balance["MaceFire"]["enabled"])
@@ -187,23 +187,7 @@ namespace Terraheim.Weapons
                 ItemManager.Instance.AddItem(arrowItem);
             }
 
-            /* maceItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Mace</i>\n" + maceItem.ItemDrop.m_itemData.m_shared.m_description;
-             maceItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack are Pinned for seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.";
-
-             gsItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Greatsword</i>\n" + gsItem.ItemDrop.m_itemData.m_shared.m_description;
-             gsItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing fire damage.";
-
-             atgeirItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Atgeir</i>\n" + atgeirItem.ItemDrop.m_itemData.m_shared.m_description;
-             atgeirItem.ItemDrop.m_itemData.m_shared.m_description += $"\nFoes struck by its secondary attack will suffer damage equal to <color=cyan>{(float)balance["AtgeirFire"]["effectVal"]*100}%</color> of their Current HP after 1.3 seconds.";
-
-             bowItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Bow</i>\n" + bowItem.ItemDrop.m_itemData.m_shared.m_description;
-             bowItem.ItemDrop.m_itemData.m_shared.m_description += $"\nArrows fired by Gwynttorrwr explode on impact. While drawing the bow, your movement speed is greatly reduced.";
-
-             gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Battleaxe</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
-             gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nIts secondary fires a short range burst of fireballs.";
-
-             gaxeItem.ItemDrop.m_itemData.m_shared.m_description = $"<i>Sledgehammer</i>\n" + gaxeItem.ItemDrop.m_itemData.m_shared.m_description;
-             gaxeItem.ItemDrop.m_itemData.m_shared.m_description += $"\nThe force at which the hammer is flung into the earth leaves a firey puddle for 5 seconds after a slam.";*/
+            /* ;*/
 
         }
     }

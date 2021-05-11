@@ -816,6 +816,44 @@
             }
         ]
     },
+    "SwordIronFire": {
+        "enabled": true,
+        "effectVal": 60,
+        "station": "forge",
+        "amountCrafted": 1,
+        "damages": [
+            {
+                "type": "slash",
+                "value": 55
+            },
+            {
+                "type": "fire",
+                "value": 60
+            }
+        ],
+        "recipe": [
+            {
+                "item": "BlackMetal",
+                "amount": 2,
+                "perLevel": 1
+            },
+            {
+                "item": "Flametal",
+                "amount": 20,
+                "perLevel": 15
+            },
+            {
+                "item": "SurtlingCore",
+                "amount": 20,
+                "perLevel": 15
+            },
+            {
+                "item": "LeatherScraps",
+                "amount": 5,
+                "perLevel": 1
+            }
+        ]
+    },
     "ThrowingAxeFlint": {
         "enabled": true,
         "station": "piece_workbench",

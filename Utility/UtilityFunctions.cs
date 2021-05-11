@@ -20,7 +20,7 @@ namespace Terraheim.Utility
             return JObject.Parse(rawText);
         }
 
-        public static void ModifyWeaponDamage(ref CustomItem item, JToken damages)
+        public static void ModifyWeaponDamage(ref CustomItem item, JToken damages, string type = "", string description = "")
         {
             foreach(var damage in damages["damages"])
             {
@@ -60,6 +60,16 @@ namespace Terraheim.Utility
                         Log.LogWarning("Terraheim: Warning damage type not found! " + (string)damage["type"]);
                         break;
                 }
+            }
+
+            if (type != "")
+            {
+                item.ItemDrop.m_itemData.m_shared.m_description = type + item.ItemDrop.m_itemData.m_shared.m_description;
+            }
+
+            if (description != "")
+            {
+                item.ItemDrop.m_itemData.m_shared.m_description += description;
             }
         }
 
