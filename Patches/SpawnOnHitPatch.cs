@@ -16,7 +16,7 @@ namespace TerraheimItems.Patches
             if (!(bool)balance["FlametalWeaponsSpecialEffectsEnabled"])
                 return;
 
-            if (__instance.m_spawnItem.m_shared.m_name.Contains("spear_fire"))
+            if (__instance.m_spawnItem != null && __instance.m_spawnItem.m_shared.m_name.Contains("spear_fire"))
             {
                 Vector3 vector = __instance.transform.position + __instance.transform.TransformDirection(__instance.m_spawnOffset);
                 Quaternion rotation = __instance.transform.rotation;
