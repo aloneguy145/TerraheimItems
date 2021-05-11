@@ -62,6 +62,8 @@ namespace Terraheim.Utility
         public static GameObject BowFireExplosionPrefab;
         public static GameObject AxeFireExplosionPrefab;
         public static GameObject VFXAtgeirFireHitPrefab;
+        public static GameObject VFXSpearFireTeleportInPrefab;
+        public static GameObject VFXSpearFireTeleportOutPrefab;
         public static AudioClip SFXAtgeirFireHitPrefab;
 
         public static GameObject SwordIronFireProjPrefab;
@@ -123,12 +125,12 @@ namespace Terraheim.Utility
             JavelinBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Javelins/Bronze/JavelinBronze.prefab");
 
             SwordIronFireProjPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/swordProj/swordironfire_projectile.prefab");
-
-            BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion1.prefab");
-            BowFireExplosionPrefab.GetComponent<Aoe>().m_damage.m_fire = (float)balance["BowFire"]["effectVal"];
+            BowFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/bow/bowFire_explosion.prefab");
             AxeFireExplosionPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/axe/axeFire_explosion.prefab");
             AxeFireExplosionPrefab.GetComponent<Aoe>().m_statusEffect = "ChainExplosionListener";
             VFXAtgeirFireHitPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Effects/vfx_flametal_atgeir_hit.prefab");
+            VFXSpearFireTeleportInPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/spear/spearFire_teleportIn.prefab");
+            VFXSpearFireTeleportOutPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/spear/spearFire_teleportOut.prefab");
             SFXAtgeirFireHitPrefab = TerraheimAssetBundle.LoadAsset<AudioClip>("Assets/CustomItems/flametal/atgeir/Flame_SpitFire3.wav");
         }
 
