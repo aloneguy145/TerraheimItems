@@ -83,7 +83,7 @@ namespace Terraheim.Weapons
             UtilityFunctions.GetRecipe(ref recipeSpear, balance["SpearFire"]);
             UtilityFunctions.GetRecipe(ref recipeTAxe, balance["ThrowingAxeFire"]);
             UtilityFunctions.GetRecipe(ref recipeArrow, balance["ArrowGreatFire"]);
-            UtilityFunctions.GetRecipe(ref recipeSword, balance["SwordIronFire"]);
+            UtilityFunctions.GetRecipe(ref recipeSword, balance["SwordFire"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
@@ -138,7 +138,7 @@ namespace Terraheim.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref knifeItem, balance["KnifeFire"], "<i>Knife</i>\n", $"\n\nStriking a foe with your secondary attack Marks them for 1 hit. Marked enemies suffer <color=cyan>{(float)balance["KnifeFire"]["effectVal"] * 100}%</color> more damage.");
             UtilityFunctions.ModifyWeaponDamage(ref spearItem, balance["SpearFire"], "<i>Spear</i>\n", $"\n\nHurling Rhongomiant across the battlefield will cause you to teleport to whatever location the spear landed.");
             UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"], "<i>Throwing Axe</i>\n", $"\n\nTyrfing hurls spectral versions of itself, depleting durability, not ammo.");
-            UtilityFunctions.ModifyWeaponDamage(ref swordItem, balance["SwordIronFire"], "<i>Sword</i>\n", $"\n\nThe secondary attack emits a deadly beam of fire that deals <color=cyan>{(float)balance["SwordIronFire"]["effectVal"]}</color> damage on impact.");
+            UtilityFunctions.ModifyWeaponDamage(ref swordItem, balance["SwordFire"], "<i>Sword</i>\n", $"\n\nThe secondary attack emits a deadly beam of fire that deals <color=cyan>{(float)balance["SwordFire"]["effectVal"]}</color> damage on impact.");
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
 
             if ((bool)balance["MaceFire"]["enabled"])
@@ -195,7 +195,7 @@ namespace Terraheim.Weapons
             {
                 ItemManager.Instance.AddItem(arrowItem);
             }
-            if ((bool)balance["SwordIronFire"]["enabled"])
+            if ((bool)balance["SwordFire"]["enabled"])
             {
                 ItemManager.Instance.AddItem(swordItem);
             }

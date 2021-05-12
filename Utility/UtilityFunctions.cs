@@ -80,7 +80,7 @@ namespace Terraheim.Utility
             foreach(var item in json["recipe"])
             {
                 itemReqs.Add(MockRequirement.Create((string)item["item"], (int)item["amount"]));
-                itemReqs[0].m_amountPerLevel = (int)item["perLevel"];
+                itemReqs[index].m_amountPerLevel = (int)item["perLevel"];
                 index++;
             }
             if(useName)

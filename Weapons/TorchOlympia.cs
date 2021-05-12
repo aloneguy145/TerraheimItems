@@ -4,6 +4,7 @@ using UnityEngine;
 using Jotunn;
 using Jotunn.Entities;
 using Jotunn.Managers;
+using Newtonsoft.Json.Linq;
 
 namespace Terraheim.Weapons
 {
@@ -13,7 +14,8 @@ namespace Terraheim.Weapons
         public static CustomRecipe customRecipe;
 
         public const string CraftingStationPrefabName = "piece_workbench";
-        
+        static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
+
         internal static void Init()
         {
             AddRecipe();
@@ -42,7 +44,8 @@ namespace Terraheim.Weapons
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.TorchOlympiaPrefab, true);
-            ItemManager.Instance.AddItem(customItem);
+            if ((bool)balance["TorchOlympia"]["enabled"])
+                ItemManager.Instance.AddItem(customItem);
         }
     }
 }

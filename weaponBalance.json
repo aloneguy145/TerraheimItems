@@ -816,7 +816,7 @@
             }
         ]
     },
-    "SwordIronFire": {
+    "SwordFire": {
         "enabled": true,
         "effectVal": 60,
         "station": "forge",
@@ -1039,6 +1039,9 @@
                 "perLevel": 1
             }
         ]
+    },
+    "TorchOlympia": {
+        "enabled": true
     },
     "MaceFire": {
         "enabled": true,
