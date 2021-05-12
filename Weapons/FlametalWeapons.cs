@@ -33,6 +33,8 @@ namespace Terraheim.Weapons
         public static CustomRecipe taxeRecipe;
         public static CustomItem arrowItem;
         public static CustomRecipe arrowRecipe;
+        public static CustomItem swordItem;
+        public static CustomRecipe swordRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -55,6 +57,7 @@ namespace Terraheim.Weapons
             var recipeSpear = ScriptableObject.CreateInstance<Recipe>();
             var recipeTAxe = ScriptableObject.CreateInstance<Recipe>();
             var recipeArrow = ScriptableObject.CreateInstance<Recipe>();
+            var recipeSword = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
@@ -67,6 +70,7 @@ namespace Terraheim.Weapons
             recipeSpear.m_item = AssetHelper.SpearFirePrefab.GetComponent<ItemDrop>();
             recipeTAxe.m_item = AssetHelper.ThrowingAxeFirePrefab.GetComponent<ItemDrop>();
             recipeArrow.m_item = AssetHelper.ArrowGreatFirePrefab.GetComponent<ItemDrop>();
+            recipeSword.m_item = AssetHelper.SwordFirePrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipeMace, balance["MaceFire"]);
             UtilityFunctions.GetRecipe(ref recipeGS, balance["GreatswordFire"]);
@@ -79,6 +83,7 @@ namespace Terraheim.Weapons
             UtilityFunctions.GetRecipe(ref recipeSpear, balance["SpearFire"]);
             UtilityFunctions.GetRecipe(ref recipeTAxe, balance["ThrowingAxeFire"]);
             UtilityFunctions.GetRecipe(ref recipeArrow, balance["ArrowGreatFire"]);
+            UtilityFunctions.GetRecipe(ref recipeSword, balance["SwordIronFire"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
@@ -91,6 +96,7 @@ namespace Terraheim.Weapons
             spearRecipe = new CustomRecipe(recipeSpear, true, true);
             taxeRecipe = new CustomRecipe(recipeTAxe, true, true);
             arrowRecipe = new CustomRecipe(recipeArrow, true, true);
+            swordRecipe = new CustomRecipe(recipeSword, true, true);
 
             ItemManager.Instance.AddRecipe(maceRecipe);
             ItemManager.Instance.AddRecipe(gsRecipe);
@@ -103,6 +109,7 @@ namespace Terraheim.Weapons
             ItemManager.Instance.AddRecipe(spearRecipe);
             ItemManager.Instance.AddRecipe(taxeRecipe);
             ItemManager.Instance.AddRecipe(arrowRecipe);
+            ItemManager.Instance.AddRecipe(swordRecipe);
         }
 
         private static void AddItem()
@@ -118,6 +125,7 @@ namespace Terraheim.Weapons
             spearItem = new CustomItem(AssetHelper.SpearFirePrefab, true);
             taxeItem = new CustomItem(AssetHelper.ThrowingAxeFirePrefab, true);
             arrowItem = new CustomItem(AssetHelper.ArrowGreatFirePrefab, true);
+            swordItem = new CustomItem(AssetHelper.SwordFirePrefab, true);
 
             UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["MaceFire"], "<i>Mace</i>\n", $"\n\nFoes struck by its secondary attack are Pinned for <color=cyan>{(float)balance["MaceFire"]["effectVal"]}</color> seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.");
             UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["GreatswordFire"], "<i>Greatsword</i>\n", $"\n\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing <color=cyan>{(float)balance["GreatswordFire"]["effectVal"]}</color> fire damage.");
@@ -130,6 +138,7 @@ namespace Terraheim.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref knifeItem, balance["KnifeFire"], "<i>Knife</i>\n", $"\n\nStriking a foe with your secondary attack Marks them for 1 hit. Marked enemies suffer <color=cyan>{(float)balance["KnifeFire"]["effectVal"] * 100}%</color> more damage.");
             UtilityFunctions.ModifyWeaponDamage(ref spearItem, balance["SpearFire"], "<i>Spear</i>\n", $"\n\nHurling Rhongomiant across the battlefield will cause you to teleport to whatever location the spear landed.");
             UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"], "<i>Throwing Axe</i>\n", $"\n\nTyrfing hurls spectral versions of itself, depleting durability, not ammo.");
+            UtilityFunctions.ModifyWeaponDamage(ref swordItem, balance["SwordIronFire"], "<i>Sword</i>\n", $"\n\nThe secondary attack emits a deadly beam of fire that deals <color=cyan>{(float)balance["SwordIronFire"]["effectVal"]}</color> damage on impact.");
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
 
             if ((bool)balance["MaceFire"]["enabled"])
@@ -186,7 +195,10 @@ namespace Terraheim.Weapons
             {
                 ItemManager.Instance.AddItem(arrowItem);
             }
-
+            if ((bool)balance["SwordIronFire"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(swordItem);
+            }
             /* ;*/
 
         }

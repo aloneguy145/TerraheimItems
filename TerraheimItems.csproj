@@ -50,7 +50,6 @@
     <Compile Include="Weapons\Battleaxes.cs" />
     <Compile Include="Weapons\FlametalWeapons.cs" />
     <Compile Include="Weapons\BowBlackmetal.cs" />
-    <Compile Include="Weapons\ModWeapons.cs" />
     <Compile Include="Weapons\ParryingDagger.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
     <Compile Include="Weapons\PickaxeBlackmetal.cs" />

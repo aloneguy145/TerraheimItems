@@ -52,8 +52,6 @@ namespace Terraheim
             Weapons.ThrowingAxes.Init();
             //Weapons.Javelins.Init();
 
-            Weapons.ModWeapons.Init();
-
             Log.LogInfo("Patching complete");
         }
 

@@ -73,7 +73,7 @@ namespace Terraheim.Utility
             }
         }
 
-        public static void GetRecipe(ref Recipe recipe, JToken json)
+        public static void GetRecipe(ref Recipe recipe, JToken json, bool useName = true)
         {
             var itemReqs = new List<Piece.Requirement>();
             int index = 0;
@@ -83,7 +83,8 @@ namespace Terraheim.Utility
                 itemReqs[0].m_amountPerLevel = (int)item["perLevel"];
                 index++;
             }
-            recipe.name = $"Recipe_{json.Path}";
+            if(useName)
+                recipe.name = $"Recipe_{json.Path}";
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create((string)json["station"]);
             recipe.m_amount = (int)json["amountCrafted"];
