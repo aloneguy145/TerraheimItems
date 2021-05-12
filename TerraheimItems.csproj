@@ -33,8 +33,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Log.cs" />
+    <Compile Include="Patches\ApplyDamagePatch.cs" />
+    <Compile Include="Patches\DrawMoveSpeedPatch.cs" />
+    <Compile Include="Patches\FireProjectilePatch.cs" />
     <Compile Include="Patches\MeleeProjectilePatch.cs" />
     <Compile Include="Patches\ProjectileSpawnOnHitPatch.cs" />
+    <Compile Include="Patches\SpawnOnHitPatch.cs" />
+    <Compile Include="StatusEffects\SE_ChainExplosionListener.cs" />
+    <Compile Include="StatusEffects\SE_HealthPercentDamage.cs" />
     <Compile Include="TerraheimItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\AnimationSpeedPatches.cs" />
@@ -43,6 +49,8 @@
     <Compile Include="Utility\UtilityFunctions.cs" />
     <Compile Include="Weapons\Battleaxes.cs" />
     <Compile Include="Weapons\FlametalWeapons.cs" />
+    <Compile Include="Weapons\BowBlackmetal.cs" />
+    <Compile Include="Weapons\ParryingDagger.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
     <Compile Include="Weapons\PickaxeBlackmetal.cs" />
     <Compile Include="Weapons\KnifeIron.cs" />
@@ -55,10 +63,6 @@
     <Compile Include="Weapons\Greatswords.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="assembly_googleanalytics">
       <HintPath>Libs\assembly_googleanalytics.dll</HintPath>
     </Reference>
@@ -82,9 +86,6 @@
     </Reference>
     <Reference Include="assembly_utils">
       <HintPath>Libs\assembly_utils.dll</HintPath>
-    </Reference>
-    <Reference Include="assembly_valheim">
-      <HintPath>Libs\assembly_valheim.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -127,17 +128,15 @@
     <Reference Include="Mono.Security">
       <HintPath>Libs\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>Libs\MonoMod.RuntimeDetour.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoMod.Utils">
-      <HintPath>Libs\MonoMod.Utils.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="Terraheim, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Terraheim\Libs\Terraheim.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\UnityEngine.dll</HintPath>
@@ -323,16 +322,23 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>Libs\UnityEngine.XRModule.dll</HintPath>
     </Reference>
-    <Reference Include="ValheimLib, Version=0.0.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ValheimLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bundle_terraheim" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="weaponBalance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JotunnLib">
+      <Version>2.0.5</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(SolutionDir)bin\debug\$(TargetName).dll" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\$(TargetName).dll"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(SolutionDir)bin\debug\$(TargetName).dll" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\$(TargetName).dll"
+copy /Y "$(SolutionDir)bin\debug\weaponBalance.json" "C:\Users\The Administrator\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Dev\BepInEx\plugins\DasSauerkraut-Terraheim\weaponBalance.json"</PostBuildEvent>
   </PropertyGroup>
 </Project>

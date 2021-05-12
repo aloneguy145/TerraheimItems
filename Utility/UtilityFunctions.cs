@@ -2,9 +2,10 @@
 using Newtonsoft.Json.Linq;
 
 using BepInEx;
-using ValheimLib.ODB;
 using System.Collections.Generic;
-using ValheimLib;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Utility
 {
@@ -19,7 +20,7 @@ namespace Terraheim.Utility
             return JObject.Parse(rawText);
         }
 
-        public static void ModifyWeaponDamage(ref CustomItem item, JToken damages)
+        public static void ModifyWeaponDamage(ref CustomItem item, JToken damages, string type = "", string description = "")
         {
             foreach(var damage in damages["damages"])
             {
@@ -60,9 +61,19 @@ namespace Terraheim.Utility
                         break;
                 }
             }
+
+            if (type != "")
+            {
+                item.ItemDrop.m_itemData.m_shared.m_description = type + item.ItemDrop.m_itemData.m_shared.m_description;
+            }
+
+            if (description != "")
+            {
+                item.ItemDrop.m_itemData.m_shared.m_description += description;
+            }
         }
 
-        public static void GetRecipe(ref Recipe recipe, JToken json)
+        public static void GetRecipe(ref Recipe recipe, JToken json, bool useName = true)
         {
             var itemReqs = new List<Piece.Requirement>();
             int index = 0;
@@ -72,9 +83,26 @@ namespace Terraheim.Utility
                 itemReqs[0].m_amountPerLevel = (int)item["perLevel"];
                 index++;
             }
+            if(useName)
+                recipe.name = $"Recipe_{json.Path}";
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create((string)json["station"]);
             recipe.m_amount = (int)json["amountCrafted"];
         }
+
+        public static bool HasProjectileAttack(string name)
+        {
+            if (name.Contains("_greatsword_fire"))
+                return true;
+            if (name.Contains("_battleaxe_fire"))
+                return true;
+            if (name.Contains("_sword_fire"))
+                return true;
+            if (name.Contains("_sledge_fire"))
+                return true;
+            return false;
+        }
+
+        
     }
 }

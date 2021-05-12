@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -44,9 +45,10 @@ namespace Terraheim.Weapons
             ironRecipe = new CustomRecipe(irRecipe, true, true);
             blackmetalRecipe = new CustomRecipe(bmRecipe, true, true);
 
-            ObjectDBHelper.Add(folcbrandRecipe);
-            ObjectDBHelper.Add(ironRecipe);
-            ObjectDBHelper.Add(blackmetalRecipe);
+
+            ItemManager.Instance.AddRecipe(folcbrandRecipe);
+            ItemManager.Instance.AddRecipe(ironRecipe);
+            ItemManager.Instance.AddRecipe(blackmetalRecipe);
         }
 
         private static void AddItem()
@@ -54,23 +56,23 @@ namespace Terraheim.Weapons
             folcbrandItem = new CustomItem(AssetHelper.FolcbrandPrefab, true);
             ironItem = new CustomItem(AssetHelper.GreatswordIronPrefab, true);
             blackmetalItem = new CustomItem(AssetHelper.GreatswordBlackmetalPrefab, true);
+            UtilityFunctions.ModifyWeaponDamage(ref folcbrandItem, balance["GreatswordFolcbrand"]);
+            UtilityFunctions.ModifyWeaponDamage(ref ironItem, balance["GreatswordIron"]);
+            UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
 
-            if ((bool)balance["GreatswordFolcbrand"]["modified"])
+            if ((bool)balance["GreatswordFolcbrand"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref folcbrandItem, balance["GreatswordFolcbrand"]);
+                ItemManager.Instance.AddItem(folcbrandItem);
             }
-            if ((bool)balance["GreatswordIron"]["modified"])
+            if ((bool)balance["GreatswordIron"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref ironItem, balance["GreatswordIron"]);
+                ItemManager.Instance.AddItem(ironItem);
             }
-            if ((bool)balance["GreatswordBlackmetal"]["modified"])
+            if ((bool)balance["GreatswordBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
+                ItemManager.Instance.AddItem(blackmetalItem);
             }
 
-            ObjectDBHelper.Add(folcbrandItem);
-            ObjectDBHelper.Add(ironItem);
-            ObjectDBHelper.Add(blackmetalItem);
         }
     }
 }

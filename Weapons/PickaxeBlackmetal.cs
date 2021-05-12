@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -30,17 +31,17 @@ namespace Terraheim.Weapons
             UtilityFunctions.GetRecipe(ref recipe, balance["PickaxeBlackmetal"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ObjectDBHelper.Add(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.PickaxeBlackmetalPrefab, true);
-            if ((bool)balance["PickaxeBlackmetal"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["PickaxeBlackmetal"]);
+            if ((bool)balance["PickaxeBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["PickaxeBlackmetal"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            ObjectDBHelper.Add(customItem);
         }
     }
 }

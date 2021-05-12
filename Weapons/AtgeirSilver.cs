@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -31,19 +32,18 @@ namespace Terraheim.Weapons
             UtilityFunctions.GetRecipe(ref recipe, balance["AtgeirSilver"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ObjectDBHelper.Add(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.AtgeirSilverPrefab, true);
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AtgeirSilver"]);
 
-            if ((bool)balance["AtgeirSilver"]["modified"])
+            if ((bool)balance["AtgeirSilver"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AtgeirSilver"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-
-            ObjectDBHelper.Add(customItem);
         }
     }
 }

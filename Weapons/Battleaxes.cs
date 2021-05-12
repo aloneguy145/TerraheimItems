@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -52,10 +53,10 @@ namespace Terraheim.Weapons
             customRecipeBM = new CustomRecipe(recipeBM, true, true);
             customRecipeSil = new CustomRecipe(recipeSil, true, true);
 
-            ObjectDBHelper.Add(customRecipe);
-            ObjectDBHelper.Add(customRecipeBronze);
-            ObjectDBHelper.Add(customRecipeBM);
-            ObjectDBHelper.Add(customRecipeSil);
+            ItemManager.Instance.AddRecipe(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipeBronze);
+            ItemManager.Instance.AddRecipe(customRecipeBM);
+            ItemManager.Instance.AddRecipe(customRecipeSil);
         }
 
         private static void AddItem()
@@ -64,28 +65,28 @@ namespace Terraheim.Weapons
             customItemBronze = new CustomItem(AssetHelper.BattleaxeBronzePrefab, true);
             customItemBM = new CustomItem(AssetHelper.GreateaxeBlackmetalPrefab, true);
             customItemSil = new CustomItem(AssetHelper.BattleaxeSilverPrefab, true);
+            
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["BattleaxeBronze"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBM, balance["BattleaxeBlackmetal"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemSil, balance["BattleaxeSilver"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
 
-            if ((bool)balance["BattleaxeBronze"]["modified"])
+            if ((bool)balance["BattleaxeBronze"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["BattleaxeBronze"]);
+                ItemManager.Instance.AddItem(customItem);
             }
-            if ((bool)balance["BattleaxeBlackmetal"]["modified"])
+            if ((bool)balance["BattleaxeBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBM, balance["BattleaxeBlackmetal"]);
+                ItemManager.Instance.AddItem(customItemBronze);
             }
-            if ((bool)balance["BattleaxeSilver"]["modified"])
+            if ((bool)balance["BattleaxeSilver"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemSil, balance["BattleaxeSilver"]);
+                ItemManager.Instance.AddItem(customItemBM);
             }
-            if ((bool)balance["AxehammerBlackmetal"]["modified"])
+            if ((bool)balance["AxehammerBlackmetal"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
+                ItemManager.Instance.AddItem(customItemSil);
             }
-
-            ObjectDBHelper.Add(customItem);
-            ObjectDBHelper.Add(customItemBronze);
-            ObjectDBHelper.Add(customItemBM);
-            ObjectDBHelper.Add(customItemSil);
         }
     }
 }

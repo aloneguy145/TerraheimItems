@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons { 
     class KnifeIron
     {
         public static CustomItem customItem;
         public static CustomRecipe customRecipe;
-
-        public const string TokenName = "$item_knife_iron";
-        public const string TokenValue = "Iron Knife";
-
-        public const string TokenDescriptionName = "$item_knife_iron_description";
-        public const string TokenDescriptionValue = "A faint reminder of your former life.";
-
-        public const string CraftingStationPrefabName = "forge";
         
         public const string TokenLanguage = "English";
 
@@ -27,9 +20,6 @@ namespace Terraheim.Weapons {
         {
             AddRecipe();
             AddItem();
-
-            Language.AddToken(TokenName, TokenValue, TokenLanguage);
-            Language.AddToken(TokenDescriptionName, TokenDescriptionValue, TokenLanguage);
         }
 
         private static void AddRecipe()
@@ -40,17 +30,18 @@ namespace Terraheim.Weapons {
             UtilityFunctions.GetRecipe(ref recipe, balance["KnifeIron"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ObjectDBHelper.Add(customRecipe);
+            ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()
         {
             customItem = new CustomItem(AssetHelper.KnifeIronPrefab, true);
-            if ((bool)balance["KnifeIron"]["modified"])
+            UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["KnifeIron"]);
+            
+            if ((bool)balance["KnifeIron"]["enabled"])
             {
-                UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["KnifeIron"]);
+                 ItemManager.Instance.AddItem(customItem);
             }
-            ObjectDBHelper.Add(customItem);
         }
     }
 }

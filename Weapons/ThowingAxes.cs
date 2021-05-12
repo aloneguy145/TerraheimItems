@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -54,11 +55,11 @@ namespace Terraheim.Weapons
             customRecipeSilver = new CustomRecipe(recipeSilver, true, true);
             customRecipeBlackmetal = new CustomRecipe(recipeBlackmetal, true, true);
 
-            ObjectDBHelper.Add(customRecipeFlint);
-            ObjectDBHelper.Add(customRecipeBronze);
-            ObjectDBHelper.Add(customRecipeIron);
-            ObjectDBHelper.Add(customRecipeSilver);
-            ObjectDBHelper.Add(customRecipeBlackmetal);
+            ItemManager.Instance.AddRecipe(customRecipeFlint);
+            ItemManager.Instance.AddRecipe(customRecipeBronze);
+            ItemManager.Instance.AddRecipe(customRecipeIron);
+            ItemManager.Instance.AddRecipe(customRecipeSilver);
+            ItemManager.Instance.AddRecipe(customRecipeBlackmetal);
         }
 
         private static void AddItem()
@@ -69,32 +70,32 @@ namespace Terraheim.Weapons
             customItemSilver = new CustomItem(AssetHelper.ThrowingAxeSilverPrefab, true);
             customItemBlackmetal = new CustomItem(AssetHelper.ThrowingAxeBlackmetalPrefab, true);
 
-            if ((bool)balance["ThrowingAxeFlint"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemFlint, balance["ThrowingAxeFlint"]);
-            }
-            if ((bool)balance["ThrowingAxeBronze"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["ThrowingAxeBronze"]);
-            }
-            if ((bool)balance["ThrowingAxeIron"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemIron, balance["ThrowingAxeIron"]);
-            }
-            if ((bool)balance["ThrowingAxeSilver"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemSilver, balance["ThrowingAxeSilver"]);
-            }
-            if ((bool)balance["ThrowingAxeBlackmetal"]["modified"])
-            {
-                UtilityFunctions.ModifyWeaponDamage(ref customItemBlackmetal, balance["ThrowingAxeBlackmetal"]);
-            }
+            UtilityFunctions.ModifyWeaponDamage(ref customItemFlint, balance["ThrowingAxeFlint"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["ThrowingAxeBronze"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemIron, balance["ThrowingAxeIron"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemSilver, balance["ThrowingAxeSilver"]);
+            UtilityFunctions.ModifyWeaponDamage(ref customItemBlackmetal, balance["ThrowingAxeBlackmetal"]);
 
-            ObjectDBHelper.Add(customItemFlint);
-            ObjectDBHelper.Add(customItemBronze);
-            ObjectDBHelper.Add(customItemIron);
-            ObjectDBHelper.Add(customItemSilver);
-            ObjectDBHelper.Add(customItemBlackmetal);
+            if ((bool)balance["ThrowingAxeFlint"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(customItemFlint);
+            }
+            if ((bool)balance["ThrowingAxeBronze"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(customItemBronze);
+            }
+            if ((bool)balance["ThrowingAxeIron"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(customItemIron);
+            }
+            if ((bool)balance["ThrowingAxeSilver"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(customItemSilver);
+            }
+            if ((bool)balance["ThrowingAxeBlackmetal"]["enabled"])
+            {
+                ItemManager.Instance.AddItem(customItemBlackmetal);
+            }
         }
     }
 }

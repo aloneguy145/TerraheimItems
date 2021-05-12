@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Terraheim.Utility;
 using UnityEngine;
-using ValheimLib;
-using ValheimLib.ODB;
+using Jotunn;
+using Jotunn.Entities;
+using Jotunn.Managers;
 
 namespace Terraheim.Weapons
 {
@@ -30,11 +31,11 @@ namespace Terraheim.Weapons
         {
             AddRecipe();
             AddItem();
-
+            /*
             Language.AddToken(TokenNameFlint, TokenValueFlint, TokenLanguage);
             Language.AddToken(TokenDescriptionFlintName, TokenDescriptionFlintValue, TokenLanguage);
             Language.AddToken("$item_javelin_bronze", "Bronze Javelin", TokenLanguage);
-            Language.AddToken("$item_javelin_bronze_description", "A bronze javelin. Effective, but uninteresting.", TokenLanguage);
+            Language.AddToken("$item_javelin_bronze_description", "A bronze javelin. Effective, but uninteresting.", TokenLanguage);*/
         }
 
         private static void AddRecipe()
@@ -51,8 +52,8 @@ namespace Terraheim.Weapons
             customRecipeFlint = new CustomRecipe(recipe, true, true);
             customRecipeBronze = new CustomRecipe(recipeBronze, true, true);
 
-            ObjectDBHelper.Add(customRecipeFlint);
-            ObjectDBHelper.Add(customRecipeBronze);
+            ItemManager.Instance.AddRecipe(customRecipeFlint);
+            ItemManager.Instance.AddRecipe(customRecipeBronze);
         }
 
         private static void AddItem()
@@ -69,8 +70,8 @@ namespace Terraheim.Weapons
                 UtilityFunctions.ModifyWeaponDamage(ref customItemBronze, balance["JavelinBronze"]);
             }
 
-            ObjectDBHelper.Add(customItemFlint);
-            ObjectDBHelper.Add(customItemBronze);
+            ItemManager.Instance.AddItem(customItemFlint);
+            ItemManager.Instance.AddItem(customItemBronze);
         }
     }
 }
