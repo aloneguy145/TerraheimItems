@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Terraheim;
-using Terraheim.Utility;
+using TerraheimItems.Utility;
 using UnityEngine;
 
 namespace TerraheimItems.Patches
@@ -15,14 +14,14 @@ namespace TerraheimItems.Patches
         [HarmonyPrefix]
         public static void FireProjectileBurstPrefix(ref Attack __instance)
         {
-            if (!(bool)balance["FlametalWeaponsSpecialEffectsEnabled"])
+            if (!(bool)balance["FlametalWeaponsSpecialEffectsEnabled"] || !__instance.m_character.IsPlayer())
                 return;
             //Log.LogInfo("Items bowshot");
-            if (!Terraheim.TerraheimItems.hasTerraheim && __instance.GetWeapon().m_shared.m_name.Contains("bow_fireTH"))
+            if (!TerraheimItems.hasTerraheim && __instance.GetWeapon().m_shared.m_name.Contains("bow_fireTH"))
             {
                 //Log.LogInfo("Items firebow");
-                AssetHelper.BowFireExplosionPrefab.GetComponent<Aoe>().m_damage.m_fire = (float)balance["BowFire"]["effectVal"];
                 __instance.m_ammoItem.m_shared.m_attack.m_attackProjectile.GetComponent<Projectile>().m_spawnOnHit = AssetHelper.BowFireExplosionPrefab;
+                __instance.m_ammoItem.m_shared.m_attack.m_attackProjectile.GetComponent<Projectile>().m_spawnOnHit.GetComponent<Aoe>().m_damage.m_fire = (float)balance["BowFire"]["effectVal"];
                 __instance.m_ammoItem.m_shared.m_attack.m_attackProjectile.GetComponent<Projectile>().m_spawnOnHitChance = 1;
             }
             else if(__instance.GetWeapon().m_shared.m_itemType == ItemDrop.ItemData.ItemType.Bow && __instance.m_ammoItem.m_shared.m_attack.m_attackProjectile.GetComponent<Projectile>().m_spawnOnHit == AssetHelper.BowFireExplosionPrefab)

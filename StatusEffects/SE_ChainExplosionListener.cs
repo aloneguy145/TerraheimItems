@@ -1,5 +1,5 @@
 ﻿
-namespace Terraheim.StatusEffects
+namespace TerraheimItems.StatusEffects
 {
     class SE_ChainExplosionListener : StatusEffect
     {

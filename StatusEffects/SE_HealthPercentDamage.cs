@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
-using Terraheim.Utility;
+using TerraheimItems.Utility;
 using UnityEngine;
 
-namespace Terraheim.StatusEffects
+namespace TerraheimItems.StatusEffects
 {
     class SE_HealthPercentDamage : StatusEffect
     {

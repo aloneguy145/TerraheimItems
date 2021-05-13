@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace Terraheim.Utility
+namespace TerraheimItems.Utility
 {
 
     class AssetHelper

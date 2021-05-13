@@ -1,6 +1,6 @@
 ﻿using BepInEx.Logging;
 
-namespace Terraheim
+namespace TerraheimItems
 {
 
     internal static class Log

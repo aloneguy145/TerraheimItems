@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using Terraheim.Utility;
+using TerraheimItems.Utility;
 using UnityEngine;
 
 namespace TerraheimItems.Patches

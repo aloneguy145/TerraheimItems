@@ -7,7 +7,7 @@ using Jotunn;
 using Jotunn.Entities;
 using Jotunn.Managers;
 
-namespace Terraheim.Utility
+namespace TerraheimItems.Utility
 {
     class UtilityFunctions
     {

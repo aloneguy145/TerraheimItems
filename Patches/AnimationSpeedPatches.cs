@@ -3,8 +3,8 @@ using HarmonyLib;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
-using Terraheim;
-using Terraheim.Utility;
+using TerraheimItems;
+using TerraheimItems.Utility;
 using UnityEngine;
 
 namespace TerraheimItems.Patches

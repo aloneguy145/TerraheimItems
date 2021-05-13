@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Terraheim.Patches
+namespace TerraheimItems.Patches
 {
     [HarmonyPatch]
     class DrawMoveSpeedPatch

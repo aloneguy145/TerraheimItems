@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Terraheim.Utility;
+using TerraheimItems.Utility;
 using UnityEngine;
 using Jotunn;
 using Jotunn.Entities;
 using Jotunn.Managers;
 
-namespace Terraheim.Weapons
+namespace TerraheimItems.Weapons
 {
     class Bombs
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Terraheim.Utility
+namespace TerraheimItems.Utility
 {
     class TranslationUtils
     {
