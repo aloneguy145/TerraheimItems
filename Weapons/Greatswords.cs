@@ -46,9 +46,12 @@ namespace TerraheimItems.Weapons
             blackmetalRecipe = new CustomRecipe(bmRecipe, true, true);
 
 
-            ItemManager.Instance.AddRecipe(folcbrandRecipe);
-            ItemManager.Instance.AddRecipe(ironRecipe);
-            ItemManager.Instance.AddRecipe(blackmetalRecipe);
+            if ((bool)balance["GreatswordFolcbrand"]["enabled"])
+                ItemManager.Instance.AddRecipe(folcbrandRecipe);
+            if ((bool)balance["GreatswordIron"]["enabled"])
+                ItemManager.Instance.AddRecipe(ironRecipe);
+            if ((bool)balance["GreatswordBlackmetal"]["enabled"])
+                ItemManager.Instance.AddRecipe(blackmetalRecipe);
         }
 
         private static void AddItem()
@@ -61,17 +64,11 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
 
             if ((bool)balance["GreatswordFolcbrand"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(folcbrandItem);
-            }
             if ((bool)balance["GreatswordIron"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(ironItem);
-            }
             if ((bool)balance["GreatswordBlackmetal"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(blackmetalItem);
-            }
 
         }
     }

@@ -53,10 +53,14 @@ namespace TerraheimItems.Weapons
             customRecipeBM = new CustomRecipe(recipeBM, true, true);
             customRecipeSil = new CustomRecipe(recipeSil, true, true);
 
-            ItemManager.Instance.AddRecipe(customRecipe);
-            ItemManager.Instance.AddRecipe(customRecipeBronze);
-            ItemManager.Instance.AddRecipe(customRecipeBM);
-            ItemManager.Instance.AddRecipe(customRecipeSil);
+            if ((bool)balance["BattleaxeBronze"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipe);
+            if ((bool)balance["BattleaxeBlackmetal"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipeBronze);
+            if ((bool)balance["BattleaxeSilver"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipeBM);
+            if ((bool)balance["AxehammerBlackmetal"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipeSil);
         }
 
         private static void AddItem()
@@ -72,21 +76,13 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref customItem, balance["AxehammerBlackmetal"]);
 
             if ((bool)balance["BattleaxeBronze"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(customItem);
-            }
             if ((bool)balance["BattleaxeBlackmetal"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(customItemBronze);
-            }
             if ((bool)balance["BattleaxeSilver"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(customItemBM);
-            }
             if ((bool)balance["AxehammerBlackmetal"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(customItemSil);
-            }
         }
     }
 }

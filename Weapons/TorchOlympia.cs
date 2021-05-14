@@ -38,7 +38,8 @@ namespace TerraheimItems.Weapons
             recipe.m_resources = itemReqs.ToArray();
             recipe.m_craftingStation = Mock<CraftingStation>.Create(CraftingStationPrefabName);
             customRecipe = new CustomRecipe(recipe, true, true);
-            ItemManager.Instance.AddRecipe(customRecipe);
+            if ((bool)balance["TorchOlympia"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()

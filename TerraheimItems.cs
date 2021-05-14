@@ -10,7 +10,6 @@ using Jotunn.Managers;
 namespace TerraheimItems
 {
     [BepInPlugin(ModGuid, ModName, ModVer)]
-    [BepInProcess("valheim.exe")]
     [BepInDependency(Jotunn.Main.ModGuid, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("DasSauerkraut.Terraheim", BepInDependency.DependencyFlags.SoftDependency)]
     class TerraheimItems : BaseUnityPlugin
@@ -21,7 +20,6 @@ namespace TerraheimItems
         private const string ModName = "TerraheimItems";
         private const string ModVer = "2.0.4";
         public static readonly string ModPath = Path.GetDirectoryName(typeof(TerraheimItems).Assembly.Location);
-        public static bool hasTerraheim = false;
 
         private readonly Harmony harmony = new Harmony(ModGuid);
         internal static TerraheimItems Instance { get; private set; }
@@ -32,7 +30,6 @@ namespace TerraheimItems
             Log.Init(Logger);
             TranslationUtils.LoadTranslations();
             SetupStatusEffects();
-            CheckTerraheim();
             harmony.PatchAll();
             Utility.AssetHelper.Init();
             Weapons.Greatswords.Init();
@@ -60,17 +57,5 @@ namespace TerraheimItems
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_HealthPercentDamage>(), fixReference: true));
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_ChainExplosionListener>(), fixReference: true));
         }
-
-        public static void CheckTerraheim()
-        {
-            if (!File.Exists(ModPath + "/Terraheim.dll"))
-            {
-                Log.LogMessage("Terraheim not found!");
-                return;
-            }
-            hasTerraheim = true;
-            Log.LogInfo("Terraheim Found!");
-        }
-
     }
 }

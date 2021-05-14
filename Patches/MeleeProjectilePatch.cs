@@ -40,7 +40,7 @@ namespace TerraheimItems.Patches
                 else if (__instance.m_weapon.m_shared.m_attackStatusEffect != null)
                     __instance.m_weapon.m_shared.m_attackStatusEffect = null;
             }
-            else if (TerraheimItems.hasTerraheim && __instance.GetWeapon().m_shared.m_name.Contains("_mace_fire"))
+            else if (__instance.GetWeapon().m_shared.m_name.Contains("_mace_fire"))
             {
                 if (__instance.m_attackAnimation == __instance.GetWeapon().m_shared.m_secondaryAttack.m_attackAnimation)
                 {
@@ -54,7 +54,7 @@ namespace TerraheimItems.Patches
                 else if (__instance.m_weapon.m_shared.m_attackStatusEffect != null)
                     __instance.m_weapon.m_shared.m_attackStatusEffect = null;
             }
-            else if (TerraheimItems.hasTerraheim && __instance.GetWeapon().m_shared.m_name.Contains("_knife_fire"))
+            else if (__instance.GetWeapon().m_shared.m_name.Contains("_knife_fire"))
             {
                 if (__instance.m_attackAnimation == __instance.GetWeapon().m_shared.m_secondaryAttack.m_attackAnimation)
                 {

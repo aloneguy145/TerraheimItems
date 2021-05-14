@@ -31,7 +31,8 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.GetRecipe(ref recipe, balance["AxeForstasca"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ItemManager.Instance.AddRecipe(customRecipe);
+            if ((bool)balance["AxeForstasca"]["enabled"])
+                ItemManager.Instance.AddRecipe(customRecipe);
         }
 
         private static void AddItem()

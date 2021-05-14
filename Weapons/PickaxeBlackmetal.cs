@@ -31,7 +31,10 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.GetRecipe(ref recipe, balance["PickaxeBlackmetal"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ItemManager.Instance.AddRecipe(customRecipe);
+            if ((bool)balance["PickaxeBlackmetal"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipe);
+            }
         }
 
         private static void AddItem()

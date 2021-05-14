@@ -98,18 +98,30 @@ namespace TerraheimItems.Weapons
             arrowRecipe = new CustomRecipe(recipeArrow, true, true);
             swordRecipe = new CustomRecipe(recipeSword, true, true);
 
-            ItemManager.Instance.AddRecipe(maceRecipe);
-            ItemManager.Instance.AddRecipe(gsRecipe);
-            ItemManager.Instance.AddRecipe(atgeirRecipe);
-            ItemManager.Instance.AddRecipe(bowRecipe);
-            ItemManager.Instance.AddRecipe(gaxeRecipe);
-            ItemManager.Instance.AddRecipe(sledgeRecipe);
-            ItemManager.Instance.AddRecipe(axeRecipe);
-            ItemManager.Instance.AddRecipe(knifeRecipe);
-            ItemManager.Instance.AddRecipe(spearRecipe);
-            ItemManager.Instance.AddRecipe(taxeRecipe);
-            ItemManager.Instance.AddRecipe(arrowRecipe);
-            ItemManager.Instance.AddRecipe(swordRecipe);
+            if ((bool)balance["MaceFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(maceRecipe);
+            if ((bool)balance["GreatswordFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(gsRecipe);
+            if ((bool)balance["AtgeirFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(atgeirRecipe);
+            if ((bool)balance["BowFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(bowRecipe);
+            if ((bool)balance["BattleaxeFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(gaxeRecipe);
+            if ((bool)balance["SledgeFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(sledgeRecipe);
+            if ((bool)balance["AxeFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(axeRecipe);
+            if ((bool)balance["KnifeFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(knifeRecipe);
+            if ((bool)balance["SpearFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(spearRecipe);
+            if ((bool)balance["ThrowingAxeFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(taxeRecipe);
+            if ((bool)balance["ArrowGreatFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(arrowRecipe);
+            if ((bool)balance["SwordFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(swordRecipe);
         }
 
         private static void AddItem()
@@ -142,64 +154,29 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
 
             if ((bool)balance["MaceFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(maceItem);
-            }
-
             if ((bool)balance["GreatswordFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(gsItem);
-            }
-
             if ((bool)balance["AtgeirFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(atgeirItem);
-            }
-
             if ((bool)balance["BowFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(bowItem);
-            }
-
             if ((bool)balance["BattleaxeFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(gaxeItem);
-            }
-
             if ((bool)balance["SledgeFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(sledgeItem);
-            }
-
             if ((bool)balance["AxeFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(axeItem);
-            }
-
             if ((bool)balance["KnifeFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(knifeItem);
-            }
-
             if ((bool)balance["SpearFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(spearItem);
-            }
-
             if ((bool)balance["ThrowingAxeFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(taxeItem);
-            }
-
             if ((bool)balance["ArrowGreatFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(arrowItem);
-            }
             if ((bool)balance["SwordFire"]["enabled"])
-            {
                 ItemManager.Instance.AddItem(swordItem);
-            }
-            /* ;*/
 
         }
     }

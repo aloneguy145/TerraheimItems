@@ -55,11 +55,27 @@ namespace TerraheimItems.Weapons
             customRecipeSilver = new CustomRecipe(recipeSilver, true, true);
             customRecipeBlackmetal = new CustomRecipe(recipeBlackmetal, true, true);
 
-            ItemManager.Instance.AddRecipe(customRecipeFlint);
-            ItemManager.Instance.AddRecipe(customRecipeBronze);
-            ItemManager.Instance.AddRecipe(customRecipeIron);
-            ItemManager.Instance.AddRecipe(customRecipeSilver);
-            ItemManager.Instance.AddRecipe(customRecipeBlackmetal);
+
+            if ((bool)balance["ThrowingAxeFlint"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipeFlint);
+            }
+            if ((bool)balance["ThrowingAxeBronze"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipeBronze);
+            }
+            if ((bool)balance["ThrowingAxeIron"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipeIron);
+            }
+            if ((bool)balance["ThrowingAxeSilver"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipeSilver);
+            }
+            if ((bool)balance["ThrowingAxeBlackmetal"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipeBlackmetal);
+            }
         }
 
         private static void AddItem()

@@ -30,7 +30,10 @@ namespace TerraheimItems.Weapons {
             UtilityFunctions.GetRecipe(ref recipe, balance["KnifeIron"]);
 
             customRecipe = new CustomRecipe(recipe, true, true);
-            ItemManager.Instance.AddRecipe(customRecipe);
+            if ((bool)balance["KnifeIron"]["enabled"])
+            {
+                ItemManager.Instance.AddRecipe(customRecipe);
+            }
         }
 
         private static void AddItem()
