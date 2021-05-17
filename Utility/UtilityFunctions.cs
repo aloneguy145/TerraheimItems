@@ -100,6 +100,8 @@ namespace TerraheimItems.Utility
                 return true;
             if (name.Contains("_sledge_fire"))
                 return true;
+            if (name.Contains("_axe_serpent"))
+                return true;
             return false;
         }
 

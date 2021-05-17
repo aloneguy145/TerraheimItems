@@ -240,6 +240,48 @@
             }
         ]
     },
+    "AxeSerpent": {
+        "enabled": true,
+        "effectVal": 40,
+        "station": "forge",
+        "amountCrafted": 1,
+        "damages": [
+            {
+                "type": "slash",
+                "value": 20
+            },
+            {
+                "type": "chop",
+                "value": 70
+            },
+            {
+                "type": "lightning",
+                "value": 90
+            }
+        ],
+        "recipe": [
+            {
+                "item": "BlackMetal",
+                "amount": 1,
+                "perLevel": 1
+            },
+            {
+                "item": "Flametal",
+                "amount": 20,
+                "perLevel": 15
+            },
+            {
+                "item": "SurtlingCore",
+                "amount": 20,
+                "perLevel": 15
+            },
+            {
+                "item": "LeatherScraps",
+                "amount": 5,
+                "perLevel": 1
+            }
+        ]
+    },
     "BattleaxeBronze": {
         "enabled": true,
         "station": "forge",
@@ -473,6 +515,38 @@
             {
                 "item": "LinenThread",
                 "amount": 5,
+                "perLevel": 5
+            }
+        ]
+    },
+    "GreatswordChitin": {
+        "enabled": true,
+        "station": "forge",
+        "amountCrafted": 1,
+        "damages": [
+            {
+                "type": "pierce",
+                "value": 55
+            },
+            {
+                "type": "blunt",
+                "value": 15
+            }
+        ],
+        "recipe": [
+            {
+                "item": "ElderBark",
+                "amount": 20,
+                "perLevel": 10
+            },
+            {
+                "item": "Iron",
+                "amount": 5,
+                "perLevel": 1
+            },
+            {
+                "item": "Chitin",
+                "amount": 30,
                 "perLevel": 5
             }
         ]

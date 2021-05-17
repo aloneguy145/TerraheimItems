@@ -24,7 +24,7 @@ namespace TerraheimItems.Patches
                 return;
             if (UtilityFunctions.HasProjectileAttack(__instance.GetWeapon().m_shared.m_name) && __instance.m_attackAnimation == __instance.GetWeapon().m_shared.m_secondaryAttack.m_attackAnimation)
             {
-                Log.LogInfo("Melee Projectile");
+                //Log.LogInfo("Melee Projectile");
                 __instance.ProjectileAttackTriggered();
                 __instance.GetWeapon().m_durability -= (int)balance["FlametalWeaponSpecialDurabilityDrain"];
             }

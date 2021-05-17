@@ -16,9 +16,11 @@ namespace TerraheimItems.Utility
         public static GameObject FolcbrandPrefab;
         public static GameObject GreatswordIronPrefab;
         public static GameObject GreatswordBlackmetalPrefab;
+        public static GameObject GreatswordChitinPrefab;
 
         public static GameObject AtgeirSilverPrefab;
         public static GameObject AxeForstascaPrefab;
+        public static GameObject AxeSerpentPrefab;
 
         public static GameObject KnifeIronPrefab;
         public static GameObject BowBlackmetalPrefab;
@@ -77,10 +79,12 @@ namespace TerraheimItems.Utility
             FolcbrandPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/folcbrand/SwordFolcbrand.prefab");
             GreatswordIronPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/greatswordiron/GreatswordIron.prefab");
             GreatswordBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/greatswordblackmetal/GreatswordBlackmetal.prefab");
+            GreatswordChitinPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/greatswordChitin/GreatswordChitinTH.prefab");
 
             AtgeirSilverPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/kresja/AtgeirSilver.prefab");
             AxeForstascaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/forstasca/AxeForstasca.prefab");
-            
+            AxeSerpentPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/serpentaxe/AxeSerpentTH.prefab");
+
             BattleaxeBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/BattleaxeBronze/BattleaxeBronzeTerraheim.prefab");
             KnifeIronPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ironKnife/KnifeIron.prefab");
             BowBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackmetalbow/BowBlackmetalTH.prefab");

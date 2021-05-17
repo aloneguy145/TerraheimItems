@@ -16,6 +16,8 @@ namespace TerraheimItems.Weapons
         public static CustomRecipe ironRecipe; 
         public static CustomItem blackmetalItem;
         public static CustomRecipe blackmetalRecipe;
+        public static CustomItem chitinItem;
+        public static CustomRecipe chitinRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -31,19 +33,23 @@ namespace TerraheimItems.Weapons
             var frRecipe = ScriptableObject.CreateInstance<Recipe>();
             var irRecipe = ScriptableObject.CreateInstance<Recipe>();
             var bmRecipe = ScriptableObject.CreateInstance<Recipe>();
+            var chRecipe = ScriptableObject.CreateInstance<Recipe>();
 
             frRecipe.m_item = AssetHelper.FolcbrandPrefab.GetComponent<ItemDrop>();
             irRecipe.m_item = AssetHelper.GreatswordIronPrefab.GetComponent<ItemDrop>();
             bmRecipe.m_item = AssetHelper.GreatswordBlackmetalPrefab.GetComponent<ItemDrop>();
+            chRecipe.m_item = AssetHelper.GreatswordChitinPrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref frRecipe, balance["GreatswordFolcbrand"]);
             UtilityFunctions.GetRecipe(ref irRecipe, balance["GreatswordIron"]);
             UtilityFunctions.GetRecipe(ref bmRecipe, balance["GreatswordBlackmetal"]);
+            UtilityFunctions.GetRecipe(ref chRecipe, balance["GreatswordChitin"]);
 
 
             folcbrandRecipe = new CustomRecipe(frRecipe, true, true);
             ironRecipe = new CustomRecipe(irRecipe, true, true);
             blackmetalRecipe = new CustomRecipe(bmRecipe, true, true);
+            chitinRecipe = new CustomRecipe(chRecipe, true, true);
 
 
             if ((bool)balance["GreatswordFolcbrand"]["enabled"])
@@ -52,6 +58,8 @@ namespace TerraheimItems.Weapons
                 ItemManager.Instance.AddRecipe(ironRecipe);
             if ((bool)balance["GreatswordBlackmetal"]["enabled"])
                 ItemManager.Instance.AddRecipe(blackmetalRecipe);
+            if ((bool)balance["GreatswordChitin"]["enabled"])
+                ItemManager.Instance.AddRecipe(chitinRecipe);
         }
 
         private static void AddItem()
@@ -59,9 +67,12 @@ namespace TerraheimItems.Weapons
             folcbrandItem = new CustomItem(AssetHelper.FolcbrandPrefab, true);
             ironItem = new CustomItem(AssetHelper.GreatswordIronPrefab, true);
             blackmetalItem = new CustomItem(AssetHelper.GreatswordBlackmetalPrefab, true);
+            chitinItem = new CustomItem(AssetHelper.GreatswordChitinPrefab, true);
+
             UtilityFunctions.ModifyWeaponDamage(ref folcbrandItem, balance["GreatswordFolcbrand"]);
             UtilityFunctions.ModifyWeaponDamage(ref ironItem, balance["GreatswordIron"]);
             UtilityFunctions.ModifyWeaponDamage(ref blackmetalItem, balance["GreatswordBlackmetal"]);
+            UtilityFunctions.ModifyWeaponDamage(ref chitinItem, balance["GreatswordChitin"]);
 
             if ((bool)balance["GreatswordFolcbrand"]["enabled"])
                 ItemManager.Instance.AddItem(folcbrandItem);
@@ -69,6 +80,8 @@ namespace TerraheimItems.Weapons
                 ItemManager.Instance.AddItem(ironItem);
             if ((bool)balance["GreatswordBlackmetal"]["enabled"])
                 ItemManager.Instance.AddItem(blackmetalItem);
+            if ((bool)balance["GreatswordChitin"]["enabled"])
+                ItemManager.Instance.AddItem(chitinItem);
 
         }
     }
