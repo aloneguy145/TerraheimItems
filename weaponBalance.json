@@ -261,23 +261,23 @@
         ],
         "recipe": [
             {
-                "item": "BlackMetal",
-                "amount": 1,
+                "item": "SalamanderFur",
+                "amount": 5,
                 "perLevel": 1
             },
             {
-                "item": "Flametal",
-                "amount": 20,
+                "item": "BlackMetal",
+                "amount": 10,
                 "perLevel": 15
             },
             {
-                "item": "SurtlingCore",
-                "amount": 20,
+                "item": "Copper",
+                "amount": 10,
                 "perLevel": 15
             },
             {
-                "item": "LeatherScraps",
-                "amount": 5,
+                "item": "SerpentScale",
+                "amount": 8,
                 "perLevel": 1
             }
         ]

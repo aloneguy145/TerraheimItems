@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Jotunn;
 using Jotunn.Entities;
 using Jotunn.Managers;
+using Terraheim;
 
 namespace TerraheimItems.Utility
 {
@@ -79,8 +80,20 @@ namespace TerraheimItems.Utility
             int index = 0;
             foreach(var item in json["recipe"])
             {
-                itemReqs.Add(MockRequirement.Create((string)item["item"], (int)item["amount"]));
-                itemReqs[index].m_amountPerLevel = (int)item["perLevel"];
+                if ((string)item["item"] == "SalamanderFur")
+                {
+                    var fur = new Piece.Requirement
+                    {
+                        m_resItem = Terraheim.Utility.SharedResources.SalamanderItem.ItemDrop,
+                        m_amount = (int)item["amount"],
+                    };
+                    itemReqs.Add(fur);
+                }
+                else
+                {
+                    itemReqs.Add(MockRequirement.Create((string)item["item"], (int)item["amount"]));
+                    itemReqs[index].m_amountPerLevel = (int)item["perLevel"];
+                }
                 index++;
             }
             if(useName)

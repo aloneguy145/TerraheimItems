@@ -33,7 +33,7 @@ namespace TerraheimItems
             harmony.PatchAll();
             Utility.AssetHelper.Init();
             Weapons.Greatswords.Init();
-            Weapons.AxeForstasca.Init();
+            Weapons.Axes.Init();
             Weapons.AtgeirSilver.Init();
             Weapons.KnifeIron.Init();
             Weapons.ParryingDagger.Init();

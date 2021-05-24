@@ -55,7 +55,7 @@
     <Compile Include="Weapons\Javelins.cs" />
     <Compile Include="Weapons\ThowingAxes.cs" />
     <Compile Include="Weapons\TorchOlympia.cs" />
-    <Compile Include="Weapons\AxeForstasca.cs" />
+    <Compile Include="Weapons\Axes.cs" />
     <Compile Include="Weapons\Bombs.cs" />
     <Compile Include="Weapons\AtgeirSilver.cs" />
     <Compile Include="Weapons\Greatswords.cs" />

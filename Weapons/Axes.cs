@@ -8,7 +8,7 @@ using Jotunn.Managers;
 
 namespace TerraheimItems.Weapons
 {
-    class AxeForstasca
+    class Axes
     {
         public static CustomItem customItem;
         public static CustomRecipe customRecipe;
@@ -31,10 +31,9 @@ namespace TerraheimItems.Weapons
             recipeSerp.m_item = AssetHelper.AxeSerpentPrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipe, balance["AxeForstasca"]);
-            UtilityFunctions.GetRecipe(ref recipeSerp, balance["AxeSerpent"]);
-
+            UtilityFunctions.GetRecipe(ref recipeSerp, balance["AxeSerpent"], true);
             customRecipe = new CustomRecipe(recipe, true, true);
-            serpRecipe = new CustomRecipe(recipe, true, true);
+            serpRecipe = new CustomRecipe(recipeSerp, true, true);
 
             if ((bool)balance["AxeForstasca"]["enabled"])
                 ItemManager.Instance.AddRecipe(customRecipe);
