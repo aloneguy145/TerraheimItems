@@ -23,6 +23,7 @@ namespace TerraheimItems.Utility
         public static GameObject AxeSerpentPrefab;
 
         public static GameObject KnifeIronPrefab;
+        public static GameObject KnifeSilverPrefab;
         public static GameObject BowBlackmetalPrefab;
 
         public static GameObject PickaxeBlackmetalPrefab;
@@ -32,6 +33,7 @@ namespace TerraheimItems.Utility
         public static GameObject BattleaxeBlackmetalPrefab;
         public static GameObject BattleaxeSilverPrefab;
         public static GameObject GreateaxeBlackmetalPrefab;
+        public static GameObject BattleaxeFlintPrefab;
 
         public static GameObject MaceFirePrefab;
         public static GameObject GreatswordFirePrefab;
@@ -45,6 +47,8 @@ namespace TerraheimItems.Utility
         public static GameObject ThrowingAxeFirePrefab;
         public static GameObject ArrowGreatFirePrefab;
         public static GameObject SwordFirePrefab;
+        public static GameObject ShieldFirePrefab;
+        public static GameObject ShieldFireTowerPrefab;
 
         public static GameObject TorchOlympiaPrefab;
         public static GameObject ParryingDaggerPrefab;
@@ -86,7 +90,9 @@ namespace TerraheimItems.Utility
             AxeSerpentPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/serpentaxe/AxeSerpentTH.prefab");
 
             BattleaxeBronzePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/BattleaxeBronze/BattleaxeBronzeTerraheim.prefab");
+            BattleaxeFlintPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/greatclub/GreataxeFlintTH.prefab");
             KnifeIronPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/ironKnife/KnifeIron.prefab");
+            KnifeSilverPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/KnifeObsidian/KnifeSilverTH.prefab");
             BowBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackmetalbow/BowBlackmetalTH.prefab");
 
             PickaxeBlackmetalPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/blackironPickaxe/PickaxeBlackmetal.prefab");
@@ -120,7 +126,9 @@ namespace TerraheimItems.Utility
             
             SwordFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/swordProj/SwordFireTH.prefab");
             SwordFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_secondaryAttack.m_attackProjectile.GetComponent<Projectile>().m_damage.m_fire = (float)balance["SwordFire"]["effectVal"];
-            
+            ShieldFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/shield/ShieldFireTH.prefab");
+            ShieldFireTowerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/gshield/ShieldFireTowerTH.prefab");
+
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
             ParryingDaggerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/parryingdagger/ShieldSilverDagger.prefab");
 

@@ -51,7 +51,7 @@
     <Compile Include="Weapons\ParryingDagger.cs" />
     <Compile Include="Weapons\SpearBlackmetal.cs" />
     <Compile Include="Weapons\PickaxeBlackmetal.cs" />
-    <Compile Include="Weapons\KnifeIron.cs" />
+    <Compile Include="Weapons\Knives.cs" />
     <Compile Include="Weapons\Javelins.cs" />
     <Compile Include="Weapons\ThowingAxes.cs" />
     <Compile Include="Weapons\TorchOlympia.cs" />

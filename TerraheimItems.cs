@@ -35,7 +35,7 @@ namespace TerraheimItems
             Weapons.Greatswords.Init();
             Weapons.Axes.Init();
             Weapons.AtgeirSilver.Init();
-            Weapons.KnifeIron.Init();
+            Weapons.Knives.Init();
             Weapons.ParryingDagger.Init();
             Weapons.BowBlackmetal.Init();
             Weapons.PickaxeBlackmetal.Init();

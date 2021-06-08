@@ -35,6 +35,10 @@ namespace TerraheimItems.Weapons
         public static CustomRecipe arrowRecipe;
         public static CustomItem swordItem;
         public static CustomRecipe swordRecipe;
+        public static CustomItem shieldItem;
+        public static CustomRecipe shieldRecipe;
+        public static CustomItem gshieldItem;
+        public static CustomRecipe gshieldRecipe;
 
         static JObject balance = UtilityFunctions.GetJsonFromFile("weaponBalance.json");
 
@@ -58,6 +62,8 @@ namespace TerraheimItems.Weapons
             var recipeTAxe = ScriptableObject.CreateInstance<Recipe>();
             var recipeArrow = ScriptableObject.CreateInstance<Recipe>();
             var recipeSword = ScriptableObject.CreateInstance<Recipe>();
+            var recipeShield = ScriptableObject.CreateInstance<Recipe>();
+            var recipeGShield = ScriptableObject.CreateInstance<Recipe>();
 
             recipeMace.m_item = AssetHelper.MaceFirePrefab.GetComponent<ItemDrop>();
             recipeGS.m_item = AssetHelper.GreatswordFirePrefab.GetComponent<ItemDrop>();
@@ -71,6 +77,8 @@ namespace TerraheimItems.Weapons
             recipeTAxe.m_item = AssetHelper.ThrowingAxeFirePrefab.GetComponent<ItemDrop>();
             recipeArrow.m_item = AssetHelper.ArrowGreatFirePrefab.GetComponent<ItemDrop>();
             recipeSword.m_item = AssetHelper.SwordFirePrefab.GetComponent<ItemDrop>();
+            recipeShield.m_item = AssetHelper.ShieldFirePrefab.GetComponent<ItemDrop>();
+            recipeGShield.m_item = AssetHelper.ShieldFireTowerPrefab.GetComponent<ItemDrop>();
 
             UtilityFunctions.GetRecipe(ref recipeMace, balance["MaceFire"]);
             UtilityFunctions.GetRecipe(ref recipeGS, balance["GreatswordFire"]);
@@ -84,6 +92,8 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.GetRecipe(ref recipeTAxe, balance["ThrowingAxeFire"]);
             UtilityFunctions.GetRecipe(ref recipeArrow, balance["ArrowGreatFire"]);
             UtilityFunctions.GetRecipe(ref recipeSword, balance["SwordFire"]);
+            UtilityFunctions.GetRecipe(ref recipeShield, balance["ShieldFire"]);
+            UtilityFunctions.GetRecipe(ref recipeGShield, balance["ShieldFireTower"]);
 
             maceRecipe = new CustomRecipe(recipeMace, true, true);
             gsRecipe = new CustomRecipe(recipeGS, true, true);
@@ -97,6 +107,8 @@ namespace TerraheimItems.Weapons
             taxeRecipe = new CustomRecipe(recipeTAxe, true, true);
             arrowRecipe = new CustomRecipe(recipeArrow, true, true);
             swordRecipe = new CustomRecipe(recipeSword, true, true);
+            shieldRecipe = new CustomRecipe(recipeShield, true, true);
+            gshieldRecipe = new CustomRecipe(recipeGShield, true, true);
 
             if ((bool)balance["MaceFire"]["enabled"])
                 ItemManager.Instance.AddRecipe(maceRecipe);
@@ -122,6 +134,10 @@ namespace TerraheimItems.Weapons
                 ItemManager.Instance.AddRecipe(arrowRecipe);
             if ((bool)balance["SwordFire"]["enabled"])
                 ItemManager.Instance.AddRecipe(swordRecipe);
+            if ((bool)balance["ShieldFire"]["enabled"])
+                ItemManager.Instance.AddRecipe(shieldRecipe);
+            if ((bool)balance["ShieldFireTower"]["enabled"])
+                ItemManager.Instance.AddRecipe(gshieldRecipe);
         }
 
         private static void AddItem()
@@ -138,6 +154,8 @@ namespace TerraheimItems.Weapons
             taxeItem = new CustomItem(AssetHelper.ThrowingAxeFirePrefab, true);
             arrowItem = new CustomItem(AssetHelper.ArrowGreatFirePrefab, true);
             swordItem = new CustomItem(AssetHelper.SwordFirePrefab, true);
+            shieldItem = new CustomItem(AssetHelper.ShieldFirePrefab, true);
+            gshieldItem = new CustomItem(AssetHelper.ShieldFireTowerPrefab, true);
 
             UtilityFunctions.ModifyWeaponDamage(ref maceItem, balance["MaceFire"], "<i>Mace</i>\n", $"\n\nFoes struck by its secondary attack are Pinned for <color=cyan>{(float)balance["MaceFire"]["effectVal"]}</color> seconds. Pinned enemies are vulnerable to all damage types and have reduced movement speed.");
             UtilityFunctions.ModifyWeaponDamage(ref gsItem, balance["GreatswordFire"], "<i>Greatsword</i>\n", $"\n\nIts secondary attack flings an explosive wave of fire across the battlefield, dealing <color=cyan>{(float)balance["GreatswordFire"]["effectVal"]}</color> fire damage.");
@@ -152,6 +170,9 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref taxeItem, balance["ThrowingAxeFire"], "<i>Throwing Axe</i>\n", $"\n\nTyrfing hurls spectral versions of itself, depleting durability, not ammo.");
             UtilityFunctions.ModifyWeaponDamage(ref swordItem, balance["SwordFire"], "<i>Sword</i>\n", $"\n\nThe secondary attack emits a deadly beam of fire that deals <color=cyan>{(float)balance["SwordFire"]["effectVal"]}</color> damage on impact.");
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
+
+            shieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Shield</i>\n" + shieldItem.ItemDrop.m_itemData.m_shared.m_description + "\n\nEffect Description here!";
+            gshieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Tower Shield</i>\n" + shieldItem.ItemDrop.m_itemData.m_shared.m_description + "\n\nEffect Description here!";
 
             if ((bool)balance["MaceFire"]["enabled"])
                 ItemManager.Instance.AddItem(maceItem);
@@ -177,6 +198,10 @@ namespace TerraheimItems.Weapons
                 ItemManager.Instance.AddItem(arrowItem);
             if ((bool)balance["SwordFire"]["enabled"])
                 ItemManager.Instance.AddItem(swordItem);
+            if ((bool)balance["ShieldFire"]["enabled"])
+                ItemManager.Instance.AddItem(shieldItem);
+            if ((bool)balance["ShieldFireTower"]["enabled"])
+                ItemManager.Instance.AddItem(gshieldItem);
 
         }
     }
