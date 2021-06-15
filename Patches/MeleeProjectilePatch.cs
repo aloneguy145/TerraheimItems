@@ -69,6 +69,7 @@ namespace TerraheimItems.Patches
                 else if (__instance.m_weapon.m_shared.m_attackStatusEffect != null)
                     __instance.m_weapon.m_shared.m_attackStatusEffect = null;
             }
+            
         }
     }
 }

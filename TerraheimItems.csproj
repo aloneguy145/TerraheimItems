@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Log.cs" />
     <Compile Include="Patches\ApplyDamagePatch.cs" />
+    <Compile Include="Patches\AttackDrawUpdatePatch.cs" />
     <Compile Include="Patches\MeleeProjectilePatch.cs" />
     <Compile Include="Patches\ProjectileSpawnOnHitPatch.cs" />
     <Compile Include="Patches\SpawnOnHitPatch.cs" />
