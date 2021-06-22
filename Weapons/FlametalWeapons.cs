@@ -171,8 +171,8 @@ namespace TerraheimItems.Weapons
             UtilityFunctions.ModifyWeaponDamage(ref swordItem, balance["SwordFire"], "<i>Sword</i>\n", $"\n\nThe secondary attack emits a deadly beam of fire that deals <color=cyan>{(float)balance["SwordFire"]["effectVal"]}</color> damage on impact.");
             UtilityFunctions.ModifyWeaponDamage(ref arrowItem, balance["ArrowGreatFire"]);
 
-            shieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Shield</i>\n" + shieldItem.ItemDrop.m_itemData.m_shared.m_description + "\n\nEffect Description here!";
-            gshieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Tower Shield</i>\n" + shieldItem.ItemDrop.m_itemData.m_shared.m_description + "\n\nEffect Description here!";
+            shieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Shield</i>\n" + shieldItem.ItemDrop.m_itemData.m_shared.m_description + $"\n\nParrying a foes attack reduces their damage by <color=cyan>{(float)balance["ShieldFire"]["effectVal"] * 100}%</color> for {(float)balance["ShieldFire"]["effectDur"]}s. After this effect wears off, {(float)balance["ShieldFire"]["effectCooldown"]}s must pass before it can be reapplied.\nPridwen sings to Arthur's other weapons, boosting their damage.";
+            gshieldItem.ItemDrop.m_itemData.m_shared.m_description = "<i>Tower Shield</i>\n" + gshieldItem.ItemDrop.m_itemData.m_shared.m_description + $"\n\nKilling enemies with Svalinn equipped stores a portion of their Max HP. Once 4 enemies have been slain, a <color=cyan>healing</color> nova is released, healing you and your allies within 4m the average of the stored HP.\nWhile Svalinn is equipped, damage from projectiles is reduced by <color=cyan>{(float)balance["ShieldFireTower"]["projProtection"] * 100}%</color>.";
 
             if ((bool)balance["MaceFire"]["enabled"])
                 ItemManager.Instance.AddItem(maceItem);

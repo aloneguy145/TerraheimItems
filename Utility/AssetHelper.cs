@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Reflection;
+using Terraheim.ArmorEffects;
 using UnityEngine;
 
 namespace TerraheimItems.Utility
@@ -128,6 +129,8 @@ namespace TerraheimItems.Utility
             SwordFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_secondaryAttack.m_attackProjectile.GetComponent<Projectile>().m_damage.m_fire = (float)balance["SwordFire"]["effectVal"];
             ShieldFirePrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/shield/ShieldFireTH.prefab");
             ShieldFireTowerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/flametal/gshield/ShieldFireTowerTH.prefab");
+            ShieldFireTowerPrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_equipStatusEffect = ScriptableObject.CreateInstance<SE_ShieldFireListener>();
+            ShieldFirePrefab.GetComponent<ItemDrop>().m_itemData.m_shared.m_equipStatusEffect = ScriptableObject.CreateInstance<SE_ShieldFireParryListener>();
 
             TorchOlympiaPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/Olympia/TorchOlympia.prefab");
             ParryingDaggerPrefab = TerraheimAssetBundle.LoadAsset<GameObject>("Assets/CustomItems/parryingdagger/ShieldSilverDagger.prefab");

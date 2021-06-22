@@ -985,6 +985,9 @@
     },
     "ShieldFire": {
         "enabled": true,
+        "effectVal": 0.10,
+        "effectDur": 45,
+        "effectCooldown": 60,
         "station": "forge",
         "amountCrafted": 1,
         "damages": [
@@ -1014,6 +1017,8 @@
     },
     "ShieldFireTower": {
         "enabled": true,
+        "effectVal": 4,
+        "projProtection": 0.10,
         "station": "forge",
         "amountCrafted": 1,
         "damages": [

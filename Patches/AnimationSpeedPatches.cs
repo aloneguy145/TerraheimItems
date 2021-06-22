@@ -24,14 +24,16 @@ namespace TerraheimItems.Patches
             //Make sure this is being applied to the right things
             if (Player.m_localPlayer == null || !___m_character.IsPlayer() || ___m_character.IsPlayer() && (___m_character as Player).GetPlayerID() != Player.m_localPlayer.GetPlayerID())
                 return;
-
+            //Log.LogMessage(1);
             //Make sure there is animation playing
             if (___m_animator?.GetCurrentAnimatorClipInfo(0)?.Any() != true || ___m_animator.GetCurrentAnimatorClipInfo(0)[0].clip == null)
                 return;
+            //Log.LogMessage(2);
 
             float twoHandSpeedBns = 0f;
             if (___m_character.GetSEMan().HaveStatusEffect("Two Hand Attack Speed") && (___m_character as Humanoid).GetCurrentWeapon()?.m_shared?.m_itemType == ItemDrop.ItemData.ItemType.TwoHandedWeapon)
                 twoHandSpeedBns = (___m_character.GetSEMan().GetStatusEffect("Two Hand Attack Speed") as SE_TwoHandAttackSpeed).GetSpeed();
+            //Log.LogMessage(3);
 
             float attackSpeedBns = 0f;
             if (___m_character.GetSEMan().HaveStatusEffect("Adrenaline"))
@@ -76,6 +78,8 @@ namespace TerraheimItems.Patches
             }
             else if (___m_character.GetSEMan().HaveStatusEffect("Adrenaline"))
                 ___m_animator.speed = ChangeSpeed(___m_character, ___m_animator, 1 + attackSpeedBns);
+
+            //Log.LogMessage($"Animation Name {___m_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name}. Speed {___m_animator.speed}");
 
         }
 
